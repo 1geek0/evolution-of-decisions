@@ -1,5 +1,5 @@
-import { AnthropicStream } from 'ai';
 import { Anthropic } from '@anthropic-ai/sdk';
+import { TextBlock } from '@anthropic-ai/sdk/src/resources/messages.js';
 
 const anthropic = new Anthropic({
     apiKey: process.env.ANTHROPIC_API_KEY,
@@ -163,7 +163,7 @@ Replace all <float> with numbers between 0 and 1, and <int> with whole numbers. 
             temperature: 0.7,
         });
 
-        let responseText = response.content[0].text;
+        let responseText = (response.content[0] as TextBlock).text;
 
         // Clean up the response text to ensure it's valid JSON
         // Remove any markdown code block indicators
@@ -190,7 +190,7 @@ Replace all <float> with numbers between 0 and 1, and <int> with whole numbers. 
             }
 
             return Response.json(jsonResponse);
-        } catch (parseError) {
+        } catch (parseError: any) {
             console.error('Failed to parse response as JSON:', parseError);
             console.error('Raw response:', responseText);
             return Response.json({
@@ -199,7 +199,7 @@ Replace all <float> with numbers between 0 and 1, and <int> with whole numbers. 
                 raw: responseText
             }, { status: 500 });
         }
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error:', error);
         return Response.json({
             error: 'Failed to process request',

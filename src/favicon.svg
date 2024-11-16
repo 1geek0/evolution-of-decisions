@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Abstract geometric pattern representing branching decisions -->
+  <g transform="translate(200, 200)">
+    <!-- Main hexagon -->
+    <polygon 
+      points="0,-80 69.28,-40 69.28,40 0,80 -69.28,40 -69.28,-40" 
+      fill="none" 
+      stroke="#0066cc" 
+      stroke-width="4"
+    />
+    
+    <!-- Connected smaller hexagons -->
+    <g transform="translate(-34.64, -60)">
+      <polygon 
+        points="0,-40 34.64,-20 34.64,20 0,40 -34.64,20 -34.64,-20" 
+        fill="none" 
+        stroke="#00a896" 
+        stroke-width="3"
+      />
+    </g>
+    
+    <g transform="translate(34.64, -60)">
+      <polygon 
+        points="0,-40 34.64,-20 34.64,20 0,40 -34.64,20 -34.64,-20" 
+        fill="none" 
+        stroke="#00a896" 
+        stroke-width="3"
+      />
+    </g>
+    
+    <g transform="translate(69.28, 0)">
+      <polygon 
+        points="0,-40 34.64,-20 34.64,20 0,40 -34.64,20 -34.64,-20" 
+        fill="none" 
+        stroke="#00a896" 
+        stroke-width="3"
+      />
+    </g>
+    
+    <!-- Connection lines -->
+    <line x1="-34.64" y1="-20" x2="-34.64" y2="-40" stroke="#0066cc" stroke-width="3"/>
+    <line x1="34.64" y1="-20" x2="34.64" y2="-40" stroke="#0066cc" stroke-width="3"/>
+    <line x1="69.28" y1="0" x2="89.28" y2="0" stroke="#0066cc" stroke-width="3"/>
+    
+    <!-- Dots representing decision points -->
+    <circle cx="-34.64" cy="-20" r="4" fill="#0066cc"/>
+    <circle cx="34.64" cy="-20" r="4" fill="#0066cc"/>
+    <circle cx="69.28" cy="0" r="4" fill="#0066cc"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="200" y="320" 
+        text-anchor="middle" 
+        font-family="Arial" 
+        font-weight="bold" 
+        font-size="24" 
+        fill="#333333">
+    Evolution of Decisions
+  </text>
+</svg>
