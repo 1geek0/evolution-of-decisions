@@ -153,10 +153,20 @@ export default function Home() {
   return (
     <div className="min-h-screen flex">
       {/* Left Sidebar */}
-      <div className="w-[400px] h-screen overflow-y-auto border-r border-gray-200 dark:border-gray-700 flex flex-col flex-shrink-0">
+      <div className="fixed w-[400px] h-screen overflow-y-auto border-r border-gray-200 dark:border-gray-700 flex flex-col flex-shrink-0">
         {/* Case Selection Area */}
         <div className="p-4 flex-1 overflow-y-auto">
-          <h2 className="text-xl font-semibold mb-4">Select Cases (max 5)</h2>
+          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+            <h2 className="font-semibold mb-2">Patient Cases</h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Select up to 5 cases to analyze treatment paths. Each case represents a unique patient with different risk factors and symptoms.
+            </p>
+            {selectedCases.length === 5 && (
+              <p className="text-sm text-amber-600 dark:text-amber-400 mt-2">
+                Maximum of 5 cases selected
+              </p>
+            )}
+          </div>
           <div className="space-y-3">
             {meningiomaCases.meningioma_cases.map((caseData, index) => (
               <CaseCard
@@ -164,6 +174,8 @@ export default function Home() {
                 age={caseData.demographics.age}
                 gender={caseData.demographics.gender}
                 occupation={caseData.demographics.occupation}
+                clinicalData={caseData.clinical_data}
+                clinicalNotes={caseData.clinical_notes}
                 isSelected={selectedCases.includes(index)}
                 onSelect={() => handleCaseSelect(index)}
               />
@@ -201,10 +213,34 @@ export default function Home() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-8 overflow-y-auto">
-        <h1 className="text-2xl font-bold mb-8">Meningioma Treatment Decision Flow</h1>
-        <div className={`w-full transition-all duration-500 ${isUpdated ? 'bg-yellow-100 dark:bg-yellow-900/20 rounded-lg p-4' : ''
-          }`}>
+      <div className="ml-[400px] flex-1 p-8 overflow-y-auto">
+        <h1 className="text-2xl font-bold mb-4">Meningioma Treatment Decision Flow</h1>
+
+        <div className="mb-8 space-y-4">
+          <p className="text-gray-600 dark:text-gray-400">
+            This tool helps visualize treatment decisions for meningioma cases. Here's how to use it:
+          </p>
+
+          <ol className="list-decimal list-inside space-y-2 text-gray-600 dark:text-gray-400">
+            <li>Select up to 5 patient cases from the sidebar</li>
+            <li>Choose either aggressive or conservative treatment approach</li>
+            <li>The flow diagram will update to show probability-based decision paths</li>
+          </ol>
+
+          {selectedCases.length === 0 && (
+            <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+              <p className="text-sm">👈 Start by selecting some patient cases from the sidebar</p>
+            </div>
+          )}
+
+          {selectedCases.length > 0 && selectedTreatment === null && (
+            <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+              <p className="text-sm">Now choose a treatment approach below the selected cases</p>
+            </div>
+          )}
+        </div>
+
+        <div className={`w-full transition-all duration-500 ${isUpdated ? 'bg-yellow-100 dark:bg-yellow-900/20 rounded-lg p-4' : ''}`}>
           <MermaidDiagram chart={getMermaidDiagram()} />
         </div>
 

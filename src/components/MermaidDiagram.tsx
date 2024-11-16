@@ -13,8 +13,18 @@ export default function MermaidDiagram({ chart }: MermaidDiagramProps) {
     useEffect(() => {
         mermaid.initialize({
             startOnLoad: true,
-            theme: 'default',
+            theme: 'neutral',
             securityLevel: 'loose',
+            fontFamily: 'monospace',
+            fontSize: 14,
+            themeVariables: {
+                primaryColor: '#1e1e1e',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#666',
+                lineColor: '#666',
+                secondaryColor: '#252525',
+                tertiaryColor: '#353535',
+            }
         });
 
         if (containerRef.current) {
