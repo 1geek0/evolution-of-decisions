@@ -41,9 +41,11 @@ const initialP = {
 
 export default function Home() {
   const [selectedCases, setSelectedCases] = useState<number[]>([]);
-  const [selectedTreatment, setSelectedTreatment] = useState<'aggressive' | 'conservative' | null>(null);
+  const [probabilities, setProbabilities] = useState({
+    aggressive: initialP,
+    conservative: initialP
+  });
   const [isLoading, setIsLoading] = useState(false);
-  const [probabilities, setProbabilities] = useState(initialP);
   const [isUpdated, setIsUpdated] = useState(false);
 
   const handleCaseSelect = (index: number) => {
@@ -58,34 +60,41 @@ export default function Home() {
     });
   };
 
-  const handleTreatmentSelect = async (treatment: 'aggressive' | 'conservative') => {
-    setSelectedTreatment(treatment);
+  const updateProbabilities = async () => {
     setIsLoading(true);
 
     try {
       const selectedCaseData = selectedCases.map(index => meningiomaCases.meningioma_cases[index]);
 
-      const response = await fetch('/api/treatment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          cases: selectedCaseData,
-          treatmentType: treatment,
+      // Fetch both treatment probabilities in parallel
+      const [aggressiveResponse, conservativeResponse] = await Promise.all([
+        fetch('/api/treatment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            cases: selectedCaseData,
+            treatmentType: 'aggressive',
+          }),
         }),
+        fetch('/api/treatment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            cases: selectedCaseData,
+            treatmentType: 'conservative',
+          }),
+        })
+      ]);
+
+      const [aggressiveProbs, conservativeProbs] = await Promise.all([
+        aggressiveResponse.json(),
+        conservativeResponse.json()
+      ]);
+
+      setProbabilities({
+        aggressive: aggressiveProbs,
+        conservative: conservativeProbs
       });
-
-      if (!response.ok) {
-        throw new Error('API request failed');
-      }
-
-      const newProbabilities = await response.json();
-      if (newProbabilities.error) {
-        throw new Error(newProbabilities.error);
-      }
-
-      setProbabilities(newProbabilities);
       setIsUpdated(true);
       setTimeout(() => setIsUpdated(false), 2000);
     } catch (error) {
@@ -99,49 +108,49 @@ export default function Home() {
   const getMermaidDiagram = () => `flowchart TD
     A[Initial MRI:\nSuspected Meningioma] --> B{{Decision Point 1:\nTreat as Symptomatic?}}
     
-    B -->|Treat as Symptomatic\n${(probabilities.symptomatic * 100).toFixed(1)}%| E
-    B -->|Treat as Asymptomatic\n${((1 - probabilities.symptomatic) * 100).toFixed(1)}%| C
+    B -->|"🔴 ${(probabilities.aggressive.symptomatic * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.symptomatic * 100).toFixed(1)}%"| E
+    B -->|"🔴 ${((1 - probabilities.aggressive.symptomatic) * 100).toFixed(1)}%\n🔵 ${((1 - probabilities.conservative.symptomatic) * 100).toFixed(1)}%"| C
     
     C{{Decision Point 2:\nRisk Level?}}
-    C -->|Classify High Risk\n${(probabilities.high_risk * 100).toFixed(1)}%| E
-    C -->|Classify Low Risk\n${((1 - probabilities.high_risk) * 100).toFixed(1)}%| D
+    C -->|"🔴 ${(probabilities.aggressive.high_risk * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.high_risk * 100).toFixed(1)}%"| E
+    C -->|"🔴 ${((1 - probabilities.aggressive.high_risk) * 100).toFixed(1)}%\n🔵 ${((1 - probabilities.conservative.high_risk) * 100).toFixed(1)}%"| D
     
     D[Watch & Scan] --> D1{{Decision Point 3:\nIntervene on Growth?}}
-    D1 -->|Intervene\n${(probabilities.growth_on_followup * 100).toFixed(1)}%| E
-    D1 -->|Continue Monitoring\n${((1 - probabilities.growth_on_followup) * 100).toFixed(1)}%| D2[Scan every ${probabilities.followup_schedule.grade_1}mo]
+    D1 -->|"🔴 ${(probabilities.aggressive.growth_on_followup * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.growth_on_followup * 100).toFixed(1)}%"| E
+    D1 -->|"🔴 ${((1 - probabilities.aggressive.growth_on_followup) * 100).toFixed(1)}%\n🔵 ${((1 - probabilities.conservative.growth_on_followup) * 100).toFixed(1)}%"| D2[Scan every ${probabilities.aggressive.followup_schedule.grade_1}mo]
     
     E{{Decision Point 4:\nSurgical vs Radiation?}}
-    E -->|Choose Surgery\n${(probabilities.surgical_candidate * 100).toFixed(1)}%| G
-    E -->|Choose Radiation\n${((1 - probabilities.surgical_candidate) * 100).toFixed(1)}%| F
+    E -->|"🔴 ${(probabilities.aggressive.surgical_candidate * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.surgical_candidate * 100).toFixed(1)}%"| G
+    E -->|"🔴 ${((1 - probabilities.aggressive.surgical_candidate) * 100).toFixed(1)}%\n🔵 ${((1 - probabilities.conservative.surgical_candidate) * 100).toFixed(1)}%"| F
     
     F{{Decision Point 5:\nRadiation Type?}}
-    F -->|Choose SRS\n${(probabilities.radiation_choice.srs_eligible * 100).toFixed(1)}%| F1[SRS Treatment]
-    F -->|Choose Fractionated\n${(probabilities.radiation_choice.fractionated_rt * 100).toFixed(1)}%| F2[Fractionated RT]
+    F -->|"🔴 ${(probabilities.aggressive.radiation_choice.srs_eligible * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.radiation_choice.srs_eligible * 100).toFixed(1)}%"| F1[SRS Treatment]
+    F -->|"🔴 ${(probabilities.aggressive.radiation_choice.fractionated_rt * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.radiation_choice.fractionated_rt * 100).toFixed(1)}%"| F2[Fractionated RT]
     
     G[Surgery] --> H{{Decision Point 6:\nPost-Surgery Management by Grade}}
     
     H -->|Grade 1 Cases| I{{Decision Point 7:\nResection Goal?}}
-    I -->|Attempt Complete\n${(probabilities.resection_extent.complete * 100).toFixed(1)}%| I1
-    I -->|Accept Partial\n${(probabilities.resection_extent.incomplete * 100).toFixed(1)}%| I2
+    I -->|"🔴 ${(probabilities.aggressive.resection_extent.complete * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.resection_extent.complete * 100).toFixed(1)}%"| I1
+    I -->|"🔴 ${(probabilities.aggressive.resection_extent.incomplete * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.resection_extent.incomplete * 100).toFixed(1)}%"| I2
     
     I1[Complete Resection] --> I1M{{Decision Point 8:\nPost-Complete Management?}}
-    I1M -->|Observe Only\n${(probabilities.grade_1_management.observe_only * 100).toFixed(1)}%| I1O
-    I1M -->|Add RT\n${(probabilities.grade_1_management.adjuvant_rt * 100).toFixed(1)}%| I1R
+    I1M -->|"🔴 ${(probabilities.aggressive.grade_1_management.observe_only * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.grade_1_management.observe_only * 100).toFixed(1)}%"| I1O
+    I1M -->|"🔴 ${(probabilities.aggressive.grade_1_management.adjuvant_rt * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.grade_1_management.adjuvant_rt * 100).toFixed(1)}%"| I1R
     
     I2[Incomplete Resection] --> I2M{{Decision Point 9:\nPost-Incomplete Management?}}
-    I2M -->|Observe\n${(probabilities.post_incomplete_treatment.observe * 100).toFixed(1)}%| I2O
-    I2M -->|Add RT\n${(probabilities.post_incomplete_treatment.immediate_rt * 100).toFixed(1)}%| I2R
+    I2M -->|"🔴 ${(probabilities.aggressive.post_incomplete_treatment.observe * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.post_incomplete_treatment.observe * 100).toFixed(1)}%"| I2O
+    I2M -->|"🔴 ${(probabilities.aggressive.post_incomplete_treatment.immediate_rt * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.post_incomplete_treatment.immediate_rt * 100).toFixed(1)}%"| I2R
     
     H -->|Grade 2 Cases| J{{Decision Point 10:\nGrade 2 Management?}}
-    J -->|Observation\n${(probabilities.grade_2_management.observe * 100).toFixed(1)}%| J1
-    J -->|Immediate RT\n${(probabilities.grade_2_management.immediate_rt * 100).toFixed(1)}%| J2
-    J -->|Clinical Trial\n${(probabilities.grade_2_management.clinical_trial * 100).toFixed(1)}%| J3
+    J -->|"🔴 ${(probabilities.aggressive.grade_2_management.observe * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.grade_2_management.observe * 100).toFixed(1)}%"| J1
+    J -->|"🔴 ${(probabilities.aggressive.grade_2_management.immediate_rt * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.grade_2_management.immediate_rt * 100).toFixed(1)}%"| J2
+    J -->|"🔴 ${(probabilities.aggressive.grade_2_management.clinical_trial * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.grade_2_management.clinical_trial * 100).toFixed(1)}%"| J3
     
     H -->|Grade 3 Cases| K[Standard Grade 3 Protocol]
     
-    I1O & I1R & I2O & I2R --> L1[Grade 1 Follow-up:\nScan q${probabilities.followup_schedule.grade_1}mo]
-    J1 & J2 & J3 --> L2[Grade 2 Follow-up:\nScan q${probabilities.followup_schedule.grade_2}mo]
-    K --> L3[Grade 3 Follow-up:\nScan q${probabilities.followup_schedule.grade_3}mo]
+    I1O & I1R & I2O & I2R --> L1[Grade 1 Follow-up:\nScan q${probabilities.aggressive.followup_schedule.grade_1}mo]
+    J1 & J2 & J3 --> L2[Grade 2 Follow-up:\nScan q${probabilities.aggressive.followup_schedule.grade_2}mo]
+    K --> L3[Grade 3 Follow-up:\nScan q${probabilities.aggressive.followup_schedule.grade_3}mo]
     
     L1 & L2 & L3 --> M[Standardized Monitoring Protocol]
     
@@ -186,28 +195,13 @@ export default function Home() {
         {/* Treatment Selection Area */}
         {selectedCases.length > 0 && (
           <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
-            <div className="space-y-2">
-              <button
-                onClick={() => handleTreatmentSelect('aggressive')}
-                disabled={isLoading}
-                className={`w-full py-2 px-4 rounded-lg transition-colors ${selectedTreatment === 'aggressive'
-                  ? 'bg-red-500 text-white'
-                  : 'bg-white hover:bg-red-50 border border-red-500 text-red-500'
-                  } ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
-              >
-                {isLoading && selectedTreatment === 'aggressive' ? 'Processing...' : 'Aggressive Treatment'}
-              </button>
-              <button
-                onClick={() => handleTreatmentSelect('conservative')}
-                disabled={isLoading}
-                className={`w-full py-2 px-4 rounded-lg transition-colors ${selectedTreatment === 'conservative'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-white hover:bg-blue-50 border border-blue-500 text-blue-500'
-                  } ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
-              >
-                {isLoading && selectedTreatment === 'conservative' ? 'Processing...' : 'Conservative Treatment'}
-              </button>
-            </div>
+            <button
+              onClick={updateProbabilities}
+              disabled={isLoading || selectedCases.length === 0}
+              className="w-full py-2 px-4 rounded-lg transition-colors bg-green-500 hover:bg-green-600 text-white disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isLoading ? 'Processing...' : 'Update Probabilities'}
+            </button>
           </div>
         )}
       </div>
@@ -218,13 +212,18 @@ export default function Home() {
 
         <div className="mb-8 space-y-4">
           <p className="text-gray-600 dark:text-gray-400">
-            This tool helps visualize treatment decisions for meningioma cases. Here's how to use it:
+            This tool helps visualize treatment decisions for meningioma cases. The diagram shows both aggressive (🔴) and conservative (🔵) treatment probabilities side by side.
           </p>
 
           <ol className="list-decimal list-inside space-y-2 text-gray-600 dark:text-gray-400">
             <li>Select up to 5 patient cases from the sidebar</li>
-            <li>Choose either aggressive or conservative treatment approach</li>
-            <li>The flow diagram will update to show probability-based decision paths</li>
+            <li>Click "Update Probabilities" to analyze both treatment approaches</li>
+            <li>The flow diagram will update to show probability paths where:
+              <ul className="list-disc list-inside ml-6 mt-2">
+                <li>🔴 Red values represent aggressive treatment probabilities</li>
+                <li>🔵 Blue values represent conservative treatment probabilities</li>
+              </ul>
+            </li>
           </ol>
 
           {selectedCases.length === 0 && (
@@ -233,9 +232,9 @@ export default function Home() {
             </div>
           )}
 
-          {selectedCases.length > 0 && selectedTreatment === null && (
+          {selectedCases.length > 0 && (
             <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
-              <p className="text-sm">Now choose a treatment approach below the selected cases</p>
+              <p className="text-sm">Click "Update Probabilities" below the selected cases to analyze both treatment approaches</p>
             </div>
           )}
         </div>
@@ -247,7 +246,7 @@ export default function Home() {
         {/* Add a status indicator */}
         {isUpdated && (
           <div className="mt-4 text-sm text-gray-600 dark:text-gray-400 animate-fade-out">
-            ↑ Values updated based on {selectedTreatment} treatment approach
+            ↑ Values updated based on {selectedCases.length > 0 ? 'aggressive' : 'conservative'} treatment approach
           </div>
         )}
       </div>
