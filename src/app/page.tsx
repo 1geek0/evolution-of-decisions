@@ -39,31 +39,24 @@ const initialP = {
   }
 };
 
-const hasRecurrence = (clinicalNotes: { aggressive: string; conservative: string }) => {
+const hasIncompleteResection = (clinicalNotes: { aggressive: string; conservative: string }) => {
   // Convert notes to lowercase for case-insensitive matching
   const combinedNotes = clinicalNotes.aggressive.toLowerCase() +
     clinicalNotes.conservative.toLowerCase();
 
-  // Define negative contexts
-  const negativeContexts = [
-    'no recurrence',
-    'without recurrence',
-    'hasn\'t recurred',
-    'has not recurred',
-    'free from recurrence',
-    'no sign of recurrence',
-    'no evidence of recurrence'
+  // Define terms indicating incomplete resection
+  const incompleteTerms = [
+    'incomplete resection',
+    'partial resection',
+    'subtotal resection',
+    'partially resected',
+    'incompletely resected',
+    'residual tumor',
+    'residual mass'
   ];
 
-  // Check if any negative context exists
-  if (negativeContexts.some(context => combinedNotes.includes(context))) {
-    return false;
-  }
-
-  // Check for positive recurrence mentions
-  return combinedNotes.includes('recurrence') ||
-    combinedNotes.includes('recurred') ||
-    combinedNotes.includes('recurring');
+  // Check if any incomplete resection term exists
+  return incompleteTerms.some(term => combinedNotes.includes(term));
 };
 
 export default function Home() {
@@ -131,20 +124,23 @@ export default function Home() {
     }
   };
 
-  const handleRecurrenceSelection = () => {
-    const recurrenceCases = meningiomaCases.meningioma_cases
-      .map((caseData, index) => ({ hasRecurrence: hasRecurrence(caseData.clinical_notes), index }))
-      .filter(item => item.hasRecurrence)
+  const handleIncompleteResectionSelection = () => {
+    const incompleteCases = meningiomaCases.meningioma_cases
+      .map((caseData, index) => ({
+        hasIncomplete: hasIncompleteResection(caseData.clinical_notes),
+        index
+      }))
+      .filter(item => item.hasIncomplete)
       .map(item => item.index);
 
     setSelectedCases(prev => {
-      // If all recurrence cases are already selected, deselect them
-      if (recurrenceCases.every(index => prev.includes(index))) {
-        return prev.filter(index => !recurrenceCases.includes(index));
+      // If all incomplete resection cases are already selected, deselect them
+      if (incompleteCases.every(index => prev.includes(index))) {
+        return prev.filter(index => !incompleteCases.includes(index));
       }
-      // Otherwise, add recurrence cases (up to 20 total cases)
+      // Otherwise, add incomplete resection cases (up to 20 total cases)
       const remainingSlots = 20 - prev.length;
-      const casesToAdd = recurrenceCases
+      const casesToAdd = incompleteCases
         .filter(index => !prev.includes(index))
         .slice(0, remainingSlots);
       return [...prev, ...casesToAdd];
@@ -218,10 +214,10 @@ export default function Home() {
               Select up to 20 cases to analyze treatment paths. Each case represents a unique patient with different risk factors and symptoms.
             </p>
             <button
-              onClick={handleRecurrenceSelection}
+              onClick={handleIncompleteResectionSelection}
               className="w-full py-1.5 px-3 rounded-lg text-sm font-medium transition-colors bg-amber-100 text-amber-700 hover:bg-amber-200 dark:bg-amber-900/30 dark:text-amber-300 dark:hover:bg-amber-900/50"
             >
-              Auto-Select Recurrence Cases
+              Auto-Select Incomplete Resection Cases
             </button>
             {selectedCases.length === 20 && (
               <p className="text-sm text-amber-600 dark:text-amber-400 mt-2">
