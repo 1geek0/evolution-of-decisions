@@ -44,6 +44,20 @@ const hasIncompleteResection = (clinicalNotes: { aggressive: string; conservativ
   const combinedNotes = clinicalNotes.aggressive.toLowerCase() +
     clinicalNotes.conservative.toLowerCase();
 
+  // Define terms indicating complete resection
+  const completeTerms = [
+    'complete resection',
+    'gross total resection',
+    'totally resected',
+    'completely resected',
+    'total removal'
+  ];
+
+  // If any complete resection terms are found, return false
+  if (completeTerms.some(term => combinedNotes.includes(term))) {
+    return false;
+  }
+
   // Define terms indicating incomplete resection
   const incompleteTerms = [
     'incomplete resection',
@@ -57,6 +71,23 @@ const hasIncompleteResection = (clinicalNotes: { aggressive: string; conservativ
 
   // Check if any incomplete resection term exists
   return incompleteTerms.some(term => combinedNotes.includes(term));
+};
+
+const hasCompleteResection = (clinicalNotes: { aggressive: string; conservative: string }) => {
+  // Convert notes to lowercase for case-insensitive matching
+  const combinedNotes = clinicalNotes.aggressive.toLowerCase() +
+    clinicalNotes.conservative.toLowerCase();
+
+  // Define terms indicating complete resection
+  const completeTerms = [
+    'complete resection',
+    'gross total resection',
+    'totally resected',
+    'completely resected',
+    'total removal'
+  ];
+
+  return completeTerms.some(term => combinedNotes.includes(term));
 };
 
 export default function Home() {
@@ -124,6 +155,25 @@ export default function Home() {
     }
   };
 
+  const handleCompleteResectionSelection = () => {
+    const completeCases = meningiomaCases.meningioma_cases
+      .map((caseData, index) => ({
+        hasComplete: hasCompleteResection(caseData.clinical_notes),
+        index
+      }))
+      .filter(item => item.hasComplete)
+      .map(item => item.index);
+
+    setSelectedCases(prev => {
+      // If all complete resection cases are already selected, clear selection
+      if (completeCases.every(index => prev.includes(index))) {
+        return [];
+      }
+      // Otherwise, select only complete resection cases (up to 20)
+      return completeCases.slice(0, 20);
+    });
+  };
+
   const handleIncompleteResectionSelection = () => {
     const incompleteCases = meningiomaCases.meningioma_cases
       .map((caseData, index) => ({
@@ -134,17 +184,17 @@ export default function Home() {
       .map(item => item.index);
 
     setSelectedCases(prev => {
-      // If all incomplete resection cases are already selected, deselect them
+      // If all incomplete resection cases are already selected, clear selection
       if (incompleteCases.every(index => prev.includes(index))) {
-        return prev.filter(index => !incompleteCases.includes(index));
+        return [];
       }
-      // Otherwise, add incomplete resection cases (up to 20 total cases)
-      const remainingSlots = 20 - prev.length;
-      const casesToAdd = incompleteCases
-        .filter(index => !prev.includes(index))
-        .slice(0, remainingSlots);
-      return [...prev, ...casesToAdd];
+      // Otherwise, select only incomplete resection cases (up to 20)
+      return incompleteCases.slice(0, 20);
     });
+  };
+
+  const handleResetSelection = () => {
+    setSelectedCases([]);
   };
 
   // Generate Mermaid diagram with current probabilities
@@ -213,12 +263,26 @@ export default function Home() {
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
               Select up to 20 cases to analyze treatment paths. Each case represents a unique patient with different risk factors and symptoms.
             </p>
-            <button
-              onClick={handleIncompleteResectionSelection}
-              className="w-full py-1.5 px-3 rounded-lg text-sm font-medium transition-colors bg-amber-100 text-amber-700 hover:bg-amber-200 dark:bg-amber-900/30 dark:text-amber-300 dark:hover:bg-amber-900/50"
-            >
-              Auto-Select Incomplete Resection Cases
-            </button>
+            <div className="space-y-2">
+              <button
+                onClick={handleCompleteResectionSelection}
+                className="w-full py-1.5 px-3 rounded-lg text-sm font-medium transition-colors bg-green-100 text-green-700 hover:bg-green-200 dark:bg-green-900/30 dark:text-green-300 dark:hover:bg-green-900/50"
+              >
+                Auto-Select Complete Resection Cases
+              </button>
+              <button
+                onClick={handleIncompleteResectionSelection}
+                className="w-full py-1.5 px-3 rounded-lg text-sm font-medium transition-colors bg-amber-100 text-amber-700 hover:bg-amber-200 dark:bg-amber-900/30 dark:text-amber-300 dark:hover:bg-amber-900/50"
+              >
+                Auto-Select Incomplete Resection Cases
+              </button>
+              <button
+                onClick={handleResetSelection}
+                className="w-full py-1.5 px-3 rounded-lg text-sm font-medium transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+              >
+                Reset Selection
+              </button>
+            </div>
             {selectedCases.length === 20 && (
               <p className="text-sm text-amber-600 dark:text-amber-400 mt-2">
                 Maximum of 20 cases selected
