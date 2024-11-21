@@ -154,13 +154,13 @@ Replace all <float> with numbers between 0 and 1, and <int> with whole numbers. 
 
     try {
         const response = await anthropic.messages.create({
-            model: 'claude-3-sonnet-20240229',
+            model: 'claude-3-5-sonnet-20241022',
             max_tokens: 1024,
             messages: [{
                 role: 'user',
                 content: prompt,
             }],
-            temperature: 0.7,
+            temperature: 0,
         });
 
         let responseText = (response.content[0] as TextBlock).text;
