@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import MermaidDiagram from '@/components/MermaidDiagram';
 import CaseCard from '@/components/CaseCard';
-import meningiomaCases from '@/data/meningioma_cases.json';
+import meningiomaCases from '@/data/meningioma_cases_201124_v3.json';
 
 // Initial probabilities
 const initialP = {
@@ -39,6 +39,33 @@ const initialP = {
   }
 };
 
+const hasRecurrence = (clinicalNotes: { aggressive: string; conservative: string }) => {
+  // Convert notes to lowercase for case-insensitive matching
+  const combinedNotes = clinicalNotes.aggressive.toLowerCase() +
+    clinicalNotes.conservative.toLowerCase();
+
+  // Define negative contexts
+  const negativeContexts = [
+    'no recurrence',
+    'without recurrence',
+    'hasn\'t recurred',
+    'has not recurred',
+    'free from recurrence',
+    'no sign of recurrence',
+    'no evidence of recurrence'
+  ];
+
+  // Check if any negative context exists
+  if (negativeContexts.some(context => combinedNotes.includes(context))) {
+    return false;
+  }
+
+  // Check for positive recurrence mentions
+  return combinedNotes.includes('recurrence') ||
+    combinedNotes.includes('recurred') ||
+    combinedNotes.includes('recurring');
+};
+
 export default function Home() {
   const [selectedCases, setSelectedCases] = useState<number[]>([]);
   const [probabilities, setProbabilities] = useState({
@@ -53,7 +80,7 @@ export default function Home() {
       if (prev.includes(index)) {
         return prev.filter(i => i !== index);
       }
-      if (prev.length >= 5) {
+      if (prev.length >= 20) {
         return prev;
       }
       return [...prev, index];
@@ -102,6 +129,26 @@ export default function Home() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleRecurrenceSelection = () => {
+    const recurrenceCases = meningiomaCases.meningioma_cases
+      .map((caseData, index) => ({ hasRecurrence: hasRecurrence(caseData.clinical_notes), index }))
+      .filter(item => item.hasRecurrence)
+      .map(item => item.index);
+
+    setSelectedCases(prev => {
+      // If all recurrence cases are already selected, deselect them
+      if (recurrenceCases.every(index => prev.includes(index))) {
+        return prev.filter(index => !recurrenceCases.includes(index));
+      }
+      // Otherwise, add recurrence cases (up to 20 total cases)
+      const remainingSlots = 20 - prev.length;
+      const casesToAdd = recurrenceCases
+        .filter(index => !prev.includes(index))
+        .slice(0, remainingSlots);
+      return [...prev, ...casesToAdd];
+    });
   };
 
   // Generate Mermaid diagram with current probabilities
@@ -167,12 +214,18 @@ export default function Home() {
         <div className="p-4 flex-1 overflow-y-auto">
           <div className="p-4 border-b border-gray-200 dark:border-gray-700">
             <h2 className="font-semibold mb-2">Patient Cases</h2>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Select up to 5 cases to analyze treatment paths. Each case represents a unique patient with different risk factors and symptoms.
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              Select up to 20 cases to analyze treatment paths. Each case represents a unique patient with different risk factors and symptoms.
             </p>
-            {selectedCases.length === 5 && (
+            <button
+              onClick={handleRecurrenceSelection}
+              className="w-full py-1.5 px-3 rounded-lg text-sm font-medium transition-colors bg-amber-100 text-amber-700 hover:bg-amber-200 dark:bg-amber-900/30 dark:text-amber-300 dark:hover:bg-amber-900/50"
+            >
+              Auto-Select Recurrence Cases
+            </button>
+            {selectedCases.length === 20 && (
               <p className="text-sm text-amber-600 dark:text-amber-400 mt-2">
-                Maximum of 5 cases selected
+                Maximum of 20 cases selected
               </p>
             )}
           </div>
@@ -216,7 +269,7 @@ export default function Home() {
           </p>
 
           <ol className="list-decimal list-inside space-y-2 text-gray-600 dark:text-gray-400">
-            <li>Select up to 5 patient cases from the sidebar</li>
+            <li>Select up to 20 patient cases from the sidebar</li>
             <li>Click "Update Probabilities" to analyze both treatment approaches</li>
             <li>The flow diagram will update to show probability paths where:
               <ul className="list-disc list-inside ml-6 mt-2">

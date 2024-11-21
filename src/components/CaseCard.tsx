@@ -4,13 +4,9 @@ import ClinicalModal from './ClinicalModal';
 interface CaseCardProps {
     age: number;
     gender: string;
-    occupation: {
-        knowledge_worker: boolean;
-        knowledge_worker_profession: string | null;
-        olfactory_profession: string | null;
-        stage_artist: boolean;
-    };
     clinicalData: {
+        tumor_type: string;
+        surgical_approach: string;
         presenting_symptoms: string[] | string;
         medical_history: string[] | string;
         treatment_path: {
@@ -31,14 +27,18 @@ interface CaseCardProps {
     onSelect: () => void;
 }
 
-export default function CaseCard({ age, gender, occupation, clinicalData, clinicalNotes, isSelected, onSelect }: CaseCardProps) {
+export default function CaseCard({ age, gender, clinicalData, clinicalNotes, isSelected, onSelect }: CaseCardProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const getOccupation = () => {
-        if (occupation.knowledge_worker_profession) return occupation.knowledge_worker_profession;
-        if (occupation.olfactory_profession) return occupation.olfactory_profession;
-        if (occupation.stage_artist) return "Stage Artist";
-        return "Not specified";
+    const getTreatmentDetails = () => {
+        const gradeMatch = clinicalNotes.aggressive.match(/WHO Grade: ([I]{1,3})/i) ||
+            clinicalNotes.aggressive.match(/WHO Grade ([I]{1,3})/i) ||
+            clinicalNotes.aggressive.match(/Grade ([I]{1,3})/i);
+        const whoGrade = gradeMatch ? `WHO Grade ${gradeMatch[1]} Meningioma` : 'Meningioma';
+
+        const surgery = clinicalData.treatment_path.surgical_approach;
+
+        return `${whoGrade} • ${surgery ? `${surgery}` : 'No surgery'}`;
     };
 
     return (
@@ -53,7 +53,9 @@ export default function CaseCard({ age, gender, occupation, clinicalData, clinic
                     <div className="flex justify-between items-center">
                         <div>
                             <h3 className="font-medium text-base">{age} y/o {gender}</h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400 mt-0.5">{getOccupation()}</p>
+                            <p className="text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                                {getTreatmentDetails()}
+                            </p>
                         </div>
                         {isSelected && (
                             <span className="text-blue-500 text-xs font-medium bg-blue-50 dark:bg-blue-900/40 px-2 py-1 rounded-full">
@@ -94,7 +96,12 @@ export default function CaseCard({ age, gender, occupation, clinicalData, clinic
                 demographics={{
                     age,
                     gender,
-                    occupation
+                    occupation: {
+                        knowledge_worker: false,
+                        knowledge_worker_profession: null,
+                        olfactory_profession: null,
+                        stage_artist: false,
+                    }
                 }}
                 clinicalData={clinicalData}
                 clinicalNotes={clinicalNotes}
