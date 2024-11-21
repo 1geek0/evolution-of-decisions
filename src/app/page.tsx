@@ -104,7 +104,7 @@ export default function Home() {
       if (prev.includes(index)) {
         return prev.filter(i => i !== index);
       }
-      if (prev.length >= 20) {
+      if (prev.length >= 10) {
         return prev;
       }
       return [...prev, index];
@@ -165,12 +165,10 @@ export default function Home() {
       .map(item => item.index);
 
     setSelectedCases(prev => {
-      // If all complete resection cases are already selected, clear selection
       if (completeCases.every(index => prev.includes(index))) {
         return [];
       }
-      // Otherwise, select only complete resection cases (up to 20)
-      return completeCases.slice(0, 20);
+      return completeCases.slice(0, 10);
     });
   };
 
@@ -184,12 +182,10 @@ export default function Home() {
       .map(item => item.index);
 
     setSelectedCases(prev => {
-      // If all incomplete resection cases are already selected, clear selection
       if (incompleteCases.every(index => prev.includes(index))) {
         return [];
       }
-      // Otherwise, select only incomplete resection cases (up to 20)
-      return incompleteCases.slice(0, 20);
+      return incompleteCases.slice(0, 10);
     });
   };
 
@@ -261,7 +257,7 @@ export default function Home() {
           <div className="p-4 border-b border-gray-200 dark:border-gray-700">
             <h2 className="font-semibold mb-2">Patient Cases</h2>
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-              Select up to 20 cases to analyze treatment paths. Each case represents a unique patient with different risk factors and symptoms.
+              Select up to 10 cases to analyze treatment paths. Each case represents a unique patient with different risk factors and symptoms.
             </p>
             <div className="space-y-2">
               <button
@@ -283,9 +279,9 @@ export default function Home() {
                 Reset Selection
               </button>
             </div>
-            {selectedCases.length === 20 && (
+            {selectedCases.length === 10 && (
               <p className="text-sm text-amber-600 dark:text-amber-400 mt-2">
-                Maximum of 20 cases selected
+                Maximum of 10 cases selected
               </p>
             )}
           </div>
@@ -328,7 +324,7 @@ export default function Home() {
           </p>
 
           <ol className="list-decimal list-inside space-y-2 text-gray-600 dark:text-gray-400">
-            <li>Select up to 20 patient cases from the sidebar</li>
+            <li>Select up to 10 patient cases from the sidebar</li>
             <li>Click "Update Probabilities" to analyze both treatment approaches</li>
             <li>The flow diagram will update to show probability paths where:
               <ul className="list-disc list-inside ml-6 mt-2">
