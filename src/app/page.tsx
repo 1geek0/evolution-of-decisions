@@ -235,7 +235,6 @@ export default function Home() {
                 key={index}
                 age={caseData.demographics.age}
                 gender={caseData.demographics.gender}
-                occupation={caseData.demographics.occupation}
                 clinicalData={caseData.clinical_data}
                 clinicalNotes={caseData.clinical_notes}
                 isSelected={selectedCases.includes(index)}

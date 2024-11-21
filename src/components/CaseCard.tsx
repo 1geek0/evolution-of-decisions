@@ -5,8 +5,6 @@ interface CaseCardProps {
     age: number;
     gender: string;
     clinicalData: {
-        tumor_type: string;
-        surgical_approach: string;
         presenting_symptoms: string[] | string;
         medical_history: string[] | string;
         treatment_path: {
