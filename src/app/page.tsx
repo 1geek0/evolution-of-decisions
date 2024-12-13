@@ -50,7 +50,10 @@ const hasIncompleteResection = (clinicalNotes: { aggressive: string; conservativ
     'gross total resection',
     'totally resected',
     'completely resected',
-    'total removal'
+    'total removal',
+    'Simpson Grade I',
+    'Simpson Grade II',
+    'Simpson Grade III'
   ];
 
   // If any complete resection terms are found, return false
@@ -60,13 +63,7 @@ const hasIncompleteResection = (clinicalNotes: { aggressive: string; conservativ
 
   // Define terms indicating incomplete resection
   const incompleteTerms = [
-    'incomplete resection',
-    'partial resection',
     'subtotal resection',
-    'partially resected',
-    'incompletely resected',
-    'residual tumor',
-    'residual mass'
   ];
 
   // Check if any incomplete resection term exists
@@ -84,7 +81,10 @@ const hasCompleteResection = (clinicalNotes: { aggressive: string; conservative:
     'gross total resection',
     'totally resected',
     'completely resected',
-    'total removal'
+    'total removal',
+    'Simpson Grade I',
+    'Simpson Grade II',
+    'Simpson Grade III'
   ];
 
   return completeTerms.some(term => combinedNotes.includes(term));
@@ -205,8 +205,8 @@ export default function Home() {
     C -->|"🔴 ${((1 - probabilities.aggressive.high_risk) * 100).toFixed(1)}%\n🔵 ${((1 - probabilities.conservative.high_risk) * 100).toFixed(1)}%"| D
     
     D[Watch & Scan] --> D1{{Decision Point 3:\nIntervene on Growth?}}
-    D1 -->|"🔴 ${(probabilities.aggressive.growth_on_followup * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.growth_on_followup * 100).toFixed(1)}%"| E
-    D1 -->|"🔴 ${((1 - probabilities.aggressive.growth_on_followup) * 100).toFixed(1)}%\n🔵 ${((1 - probabilities.conservative.growth_on_followup) * 100).toFixed(1)}%"| D2[Scan every ${probabilities.aggressive.followup_schedule.grade_1}mo]
+    D1 ---Yes-->|"🔴 ${(probabilities.aggressive.growth_on_followup * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.growth_on_followup * 100).toFixed(1)}%"| E
+    D1 ---No-->|"🔴 ${((1 - probabilities.aggressive.growth_on_followup) * 100).toFixed(1)}%\n🔵 ${((1 - probabilities.conservative.growth_on_followup) * 100).toFixed(1)}%"| D2[Scan every ${probabilities.aggressive.followup_schedule.grade_1}mo]
     
     E{{Decision Point 4:\nSurgical vs Radiation?}}
     E -->|"🔴 ${(probabilities.aggressive.surgical_candidate * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.surgical_candidate * 100).toFixed(1)}%"| G
@@ -223,31 +223,34 @@ export default function Home() {
     I -->|"🔴 ${(probabilities.aggressive.resection_extent.incomplete * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.resection_extent.incomplete * 100).toFixed(1)}%"| I2
     
     I1[Complete Resection] --> I1M{{Decision Point 8:\nPost-Complete Management?}}
-    I1M -->|"🔴 ${(probabilities.aggressive.grade_1_management.observe_only * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.grade_1_management.observe_only * 100).toFixed(1)}%"| I1O
-    I1M -->|"🔴 ${(probabilities.aggressive.grade_1_management.adjuvant_rt * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.grade_1_management.adjuvant_rt * 100).toFixed(1)}%"| I1R
+    
     
     I2[Incomplete Resection] --> I2M{{Decision Point 9:\nPost-Incomplete Management?}}
-    I2M -->|"🔴 ${(probabilities.aggressive.post_incomplete_treatment.observe * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.post_incomplete_treatment.observe * 100).toFixed(1)}%"| I2O
-    I2M -->|"🔴 ${(probabilities.aggressive.post_incomplete_treatment.immediate_rt * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.post_incomplete_treatment.immediate_rt * 100).toFixed(1)}%"| I2R
     
-    H -->|Grade 2 Cases| J{{Decision Point 10:\nGrade 2 Management?}}
-    J -->|"🔴 ${(probabilities.aggressive.grade_2_management.observe * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.grade_2_management.observe * 100).toFixed(1)}%"| J1
-    J -->|"🔴 ${(probabilities.aggressive.grade_2_management.immediate_rt * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.grade_2_management.immediate_rt * 100).toFixed(1)}%"| J2
-    J -->|"🔴 ${(probabilities.aggressive.grade_2_management.clinical_trial * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.grade_2_management.clinical_trial * 100).toFixed(1)}%"| J3
     
-    H -->|Grade 3 Cases| K[Standard Grade 3 Protocol]
     
-    I1O & I1R & I2O & I2R --> L1[Grade 1 Follow-up:\nScan q${probabilities.aggressive.followup_schedule.grade_1}mo]
-    J1 & J2 & J3 --> L2[Grade 2 Follow-up:\nScan q${probabilities.aggressive.followup_schedule.grade_2}mo]
-    K --> L3[Grade 3 Follow-up:\nScan q${probabilities.aggressive.followup_schedule.grade_3}mo]
+    
+    I1M --> L1[Grade 1 Follow-up:\nScan q${probabilities.aggressive.followup_schedule.grade_1}mo]
+    I2M -->|"🔴 ${(probabilities.aggressive.post_incomplete_treatment.observe * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.post_incomplete_treatment.observe * 100).toFixed(1)}%"| L1
+    I2M -->|"🔴 ${(probabilities.aggressive.post_incomplete_treatment.immediate_rt * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.post_incomplete_treatment.immediate_rt * 100).toFixed(1)}%"| Q[Consider RT]
+
+    
+    H --Grade 2 Cases--> L2[Grade 2 Follow-up:\nScan q${probabilities.aggressive.followup_schedule.grade_2}mo]
+
+    H -->|Grade 3 Cases| L3[Grade 3 Follow-up:\nScan q${probabilities.aggressive.followup_schedule.grade_3}mo]
     
     L1 & L2 & L3 --> M[Standardized Monitoring Protocol]
+
+    Q --> M
     
     style H fill:#f9f,stroke:#333,stroke-width:4px
     style G fill:#bbf,stroke:#333,stroke-width:4px
     style E fill:#dfd,stroke:#333,stroke-width:4px
     style M fill:#ffd,stroke:#333,stroke-width:4px`;
 
+  // TODO: Under the Grade 1 management add 'Radiotherapy/RT' yes/no node
+  // TODO: Use the same structure for Grade 2 and Grade 3 management
+  // TODO: Aggressive path would have a bias towards RT
   return (
     <div className="min-h-screen flex">
       {/* Left Sidebar */}
@@ -257,7 +260,7 @@ export default function Home() {
           <div className="p-4 border-b border-gray-200 dark:border-gray-700">
             <h2 className="font-semibold mb-2">Patient Cases</h2>
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-              Select up to 10 cases to analyze treatment paths. Each case represents a unique patient with different risk factors and symptoms.
+              Select up to 20 cases to analyze treatment paths. Each case represents a unique patient with different risk factors and symptoms.
             </p>
             <div className="space-y-2">
               <button
@@ -278,10 +281,13 @@ export default function Home() {
               >
                 Reset Selection
               </button>
+              <div className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+                Selected cases: {selectedCases.length} / 20
+              </div>
             </div>
-            {selectedCases.length === 10 && (
+            {selectedCases.length === 20 && (
               <p className="text-sm text-amber-600 dark:text-amber-400 mt-2">
-                Maximum of 10 cases selected
+                Maximum of 20 cases selected
               </p>
             )}
           </div>
