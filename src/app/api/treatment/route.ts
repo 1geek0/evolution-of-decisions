@@ -54,51 +54,6 @@ const decisionTree = `flowchart TD
     style E fill:#dfd,stroke:#333,stroke-width:4px
     style M fill:#ffd,stroke:#333,stroke-width:4px`;
 
-const jsonFormat = `{
-    # Initial Assessment
-    'symptomatic': <float>[0-1],
-    
-    # Risk Assessment
-    'high_risk': <float>[0-1],
-    'growth_on_followup': <float>[0-1],
-    
-    # Treatment Planning
-    'surgical_candidate': <float>[0-1],
-    'radiation_choice': {
-        'srs_eligible': <float>[0-1],
-        'fractionated_rt': <float>[0-1],
-    },
-    
-    # Surgical Outcomes
-    'resection_extent': {
-        'complete': <float>[0-1],
-        'incomplete': <float>[0-1],
-    },
-    
-    # Post-Surgery Treatment
-    'post_incomplete_treatment': {
-        'observe': <float>[0-1],
-        'immediate_rt': <float>[0-1],
-    },
-    
-    # Grade-Specific Management
-    'grade_1_management': {
-        'observe_only': <float>[0-1],
-        'adjuvant_rt': <float>[0-1],
-    },
-    'grade_2_management': {
-        'observe': <float>[0-1],
-        'immediate_rt': <float>[0-1],
-        'clinical_trial': <float>[0-1],
-    },
-    
-    # Follow-up Intensity
-    'followup_schedule': {
-        'grade_1': <int>,             # Months between scans for Grade 1
-        'grade_2': <int>,             # Months between scans for Grade 2
-        'grade_3': <int>              # Months between scans for Grade 3
-    }
-}`;
 
 export async function POST(req: Request) {
     const { cases, treatmentType } = await req.json();
@@ -118,7 +73,7 @@ ${decisionTree}
 Clinical Notes:
 ${clinicalNotes.join('\n\n')}
 
-You must respond with ONLY a valid JSON object in this exact format, with no additional text or explanation:
+You must respond with ONLY a valid JSON object in this exact format. These are probabilities of the decision points, they are arranged in the order of the decision tree:
 {
     "symptomatic": <float>,
     "high_risk": <float>,
@@ -152,6 +107,9 @@ You must respond with ONLY a valid JSON object in this exact format, with no add
     }
 }
 
+If there are no cases for a certain decision point, for example, if there are no cases for Grade 1 management, set the rest of the values under Grade 1 management to 0.
+So, everything under grade_1_management should be 0 if there are no cases for Grade 1 management. Or if all cases were symptomatic, everything from risk level to post_incomplete_treatment should be 0.
+
 Replace all <float> with numbers between 0 and 1, and <int> with whole numbers. Do not include any comments, explanations, or additional text in your response. Only return the JSON object.`;
 
     try {
@@ -162,10 +120,11 @@ Replace all <float> with numbers between 0 and 1, and <int> with whole numbers. 
                 role: 'user',
                 content: prompt,
             }],
-            temperature: 0,
+            temperature: 0.3,
         });
 
         let responseText = (response.content[0] as TextBlock).text;
+        console.log(responseText);
 
         // Clean up the response text to ensure it's valid JSON
         // Remove any markdown code block indicators

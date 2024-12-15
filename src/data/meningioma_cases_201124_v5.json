@@ -1,0 +1,417 @@
+{
+  "meningioma_cases": [
+    {
+      "demographics": {
+        "age": 50,
+        "gender": "Female",
+        "blood_type": "B",
+        "occupation": {
+          "knowledge_worker": true,
+          "knowledge_worker_profession": "Data Scientist",
+          "olfactory_profession": false,
+          "stage_artist": false
+        }
+      },
+      "medical_factors": {
+        "diabetes": false,
+        "pregnancy": false,
+        "obesity": false,
+        "medical_radiation_exposure": true
+      },
+      "clinical_data": {
+        "presenting_symptoms": [
+          "Progressive headaches over 6 months, worse in the morning",
+          "Intermittent numbness and weakness in right leg",
+          "Recent onset of difficulty with concentration while working",
+          "Episodes of visual disturbances - brief blurring of vision",
+          "Occasional balance issues when walking",
+          "Mild personality changes noted by family - increased irritability",
+          "Two episodes of focal seizures affecting the right leg in past month"
+        ],
+        "medical_history": [
+          "Radiation therapy to head region for childhood retinoblastoma at age 5",
+          "Migraine headaches since age 35, managed with sumatriptan",
+          "Surgical removal of benign thyroid nodule in 2018",
+          "No significant cardiovascular history",
+          "No history of trauma",
+          "Regular screening MRIs due to prior radiation exposure",
+          "Family history negative for brain tumors",
+          "Previous MRI 2 years ago was normal"
+        ],
+        "meningioma_grade": "WHO Grade 2",
+        "meningioma_details": "2 Parasagittal/Falx 4.2"
+      },
+      "clinical_notes": {
+        "aggressive": "CLINICAL NOTES - NEUROSURGERY DEPARTMENT\nPatient ID: [REDACTED]\nDemographics: 50F, Blood Type B\nOccupation: Data Scientist\n\nINITIAL VISIT - March 15, 2018\nPresenting Symptoms: Progressive headaches, right leg weakness/numbness, cognitive difficulties, visual disturbances, balance issues, personality changes, focal seizures\nImaging: MRI reveals 4.2cm parasagittal/falx meningioma, WHO Grade II\nKPS: 80 ECOG: 1\n\nAssessment & Plan:\n- Given size, symptoms, and WHO grade II classification, immediate surgical intervention recommended\n- High-risk factors: prior radiation exposure, cognitive symptoms affecting work performance\n- Pre-surgical mapping planned\n- Anti-epileptic medication started: Levetiracetam 500mg BID\n\nSURGICAL NOTE - April 2, 2018\nProcedure: Simpson Grade II resection of parasagittal meningioma\nFindings: Significant vascularity, some venous sinus involvement\nPost-op KPS: 70 ECOG: 2\n\nFOLLOW-UP - July 15, 2018\nStatus: Improving strength, minimal headaches\nImaging: Post-op MRI shows small residual tumor\nKPS: 85 ECOG: 1\nPlan: Adjuvant radiation therapy recommended\n\nRADIATION ONCOLOGY NOTE - September 2018\nCompleted fractionated RT\nKPS: 80 ECOG: 1\n\nFOLLOW-UP - March 2019\nStatus: Returned to work part-time\nImaging: Stable\nKPS: 90 ECOG: 1\n\nANNUAL FOLLOW-UP - April 2020\nStatus: Working full-time, mild fatigue\nImaging: No progression\nKPS: 95 ECOG: 0\n\nFOLLOW-UP - October 2021\nStatus: New onset headaches\nImaging: Small area of enhancement at resection margin\nKPS: 85 ECOG: 1\nPlan: Increased monitoring frequency\n\nURGENT VISIT - March 2022\nStatus: Recurrent seizures\nImaging: Tumor progression\nKPS: 70 ECOG: 2\nPlan: Second surgery scheduled\n\nSURGICAL NOTE - April 2022\nProcedure: Re-resection\nKPS: 65 ECOG: 2\n\nFOLLOW-UP - October 2022\nStatus: Stable, returned to modified work schedule\nKPS: 80 ECOG: 1\n\nFOLLOW-UP - April 2023\nStatus: Maintaining function, no new symptoms\nImaging: Stable\nKPS: 85 ECOG: 1\n\nRECENT FOLLOW-UP - January 2024\nStatus: Functionally independent, working full-time\nImaging: No evidence of progression\nKPS: 90 ECOG: 1\nPlan: Continue q4 month MRI surveillance\n\nTreatment Summary 2018-2024:\n- Two surgical interventions\n- One course of radiation therapy\n- Regular MRI surveillance\n- Maintained occupational function with brief periods of disability\n- KPS range: 65-95\n- Current status: Stable disease, good functional status\n\nFinal KPS: 90\nFinal ECOG: 1\n\nMonitoring Plan:\n- Continue q4 month MRI\n- Quarterly clinical evaluations\n- Anticonvulsant monitoring\n- Cognitive function assessments\n- Occupational therapy as needed",
+        "conservative": "CLINICAL NOTES - NEUROSURGERY DEPARTMENT\nPatient ID: [Redacted]\nDemographics: 50F, Blood Type B\nOccupation: Data Scientist\n\nINITIAL VISIT - March 15, 2018\nPresenting Complaint: Progressive neurological symptoms including headaches, right leg weakness, visual disturbances, and focal seizures.\n\nImaging Findings:\n- MRI reveals 4.2cm parasagittal/falx meningioma\n- WHO Grade II\n- Moderate mass effect on superior sagittal sinus\n- Surrounding edema present\n\nAssessment:\nGiven patient's history of childhood radiation exposure and current symptomatology, careful consideration of management approach is warranted. Despite size and symptoms, advocating for initial conservative management with close monitoring.\n\nPlan:\n1. Anti-epileptic medication: Levetiracetam 500mg BID\n2. Dexamethasone 4mg BID with taper\n3. Monthly MRI for first 3 months\n4. Occupational adjustments recommended - reduced screen time, frequent breaks\nKPS: 80 ECOG: 1\n\nFOLLOW-UP - June 20, 2018\nSymptoms stable with medication\nImaging: No significant growth\nPlan: Continue current management\nKPS: 85 ECOG: 1\n\nFOLLOW-UP - December 12, 2018\nImproved headaches\nSeizures controlled\nMRI: Stable lesion\nPlan: Extend imaging interval to 3 months\nKPS: 90 ECOG: 0\n\nFOLLOW-UP - March 15, 2019\nMinor progression of right leg weakness\nMRI: 2mm growth\nPlan: Continue conservative management, increase steroid dose\nKPS: 75 ECOG: 1\n\nANNUAL REVIEW - March 10, 2020\nStable symptoms\nWorking full-time with accommodations\nMRI: No significant change\nKPS: 85 ECOG: 1\n\nFOLLOW-UP - March 5, 2021\nIncreased headaches\nMRI: 3mm growth\nDiscussed surgical options but patient prefers conservative approach\nPlan: Optimize medical management\nKPS: 70 ECOG: 1\n\nFOLLOW-UP - September 15, 2022\nWorsening symptoms\nMRI: Additional growth to 4.7cm\nRecommend considering surgical intervention\nPatient still preferring conservative approach\nKPS: 60 ECOG: 2\n\nFOLLOW-UP - March 20, 2023\nSignificant functional decline\nMRI: Tumor now 5.0cm with increased edema\nStrong recommendation for surgical intervention\nPatient agrees to consider surgery\nKPS: 50 ECOG: 2\n\nLATEST FOLLOW-UP - January 15, 2024\nPost-surgical status (partial resection performed)\nImproved symptoms\nRegular rehabilitation ongoing\nReturn to work part-time\nPlan: Continue monitoring every 3 months\nKPS: 80 ECOG: 1\n\nTreatment Summary 2018-2024:\n- Initial conservative management with careful monitoring\n- Medical management of symptoms\n- Eventual surgical intervention when conservative approach no longer sustainable\n- Focus on quality of life and occupational function\n- Regular adjustments based on clinical status\n\nKPS Range: 50-90\nECOG Range: 0-2\n\nNote: Conservative management was maintained as long as safely possible, with eventual transition to surgical intervention when symptoms and tumor growth necessitated more aggressive treatment."
+      }
+    },
+    {
+      "demographics": {
+        "age": 66,
+        "gender": "Male",
+        "blood_type": "O",
+        "occupation": {
+          "knowledge_worker": true,
+          "knowledge_worker_profession": "Researcher",
+          "olfactory_profession": false,
+          "stage_artist": false
+        }
+      },
+      "medical_factors": {
+        "diabetes": true,
+        "pregnancy": false,
+        "obesity": false,
+        "medical_radiation_exposure": false
+      },
+      "clinical_data": {
+        "presenting_symptoms": "Intermittent headaches gradually increasing over 6 months, mild right leg weakness noticed during daily walks, occasional episodes of confusion while working, one episode of focal seizure affecting the right leg, difficulty concentrating on research work, subtle personality changes reported by family members",
+        "medical_history": "Type 2 diabetes diagnosed 12 years ago - controlled with metformin and diet, hypertension diagnosed 8 years ago - managed with lisinopril, history of migraine headaches since age 40 but pattern changed in last year, underwent cholecystectomy at age 52, family history of cardiovascular disease, no prior neurological conditions, compliant with medications, regular check-ups with primary care physician, last HbA1c 7.1%, no history of smoking or alcohol abuse",
+        "meningioma_grade": "WHO Grade 1",
+        "meningioma_details": "1 Parasagittal/Falx 0.5"
+      },
+      "clinical_notes": {
+        "aggressive": "CLINICAL NOTES - NEUROSURGERY DEPARTMENT\nPatient ID: [REDACTED]\n66-year-old male, Blood Type O\nOccupation: Researcher\nPrimary Diagnosis: WHO Grade I Parasagittal/Falx Meningioma\n\nINITIAL VISIT - March 15, 2018\nChief Complaints:\n- Progressive headaches (6-month duration)\n- Right leg weakness\n- Cognitive changes\n- Focal seizure episode\n\nMRI Findings:\n- 0.5cm parasagittal meningioma\n- Minimal surrounding edema\n- No significant mass effect\nKPS: 90 | ECOG: 1\n\nAssessment & Plan:\nGiven patient's cognitive-demanding occupation and symptom progression, recommending early surgical intervention. Location and size favorable for complete resection.\n\nSURGICAL INTERVENTION - April 2, 2018\nProcedure: Complete surgical resection\nComplications: None\nPost-op KPS: 80 | ECOG: 1\n\nFOLLOW-UP VISIT - July 15, 2018\n- Excellent recovery\n- Headaches resolved\n- Improving right leg strength\n- Returned to work part-time\nKPS: 90 | ECOG: 1\n\nANNUAL FOLLOW-UP - March 2019\n- No recurrence on MRI\n- Full return to research work\n- Seizure-free on levetiracetam\nKPS: 100 | ECOG: 0\n\nFOLLOW-UP - March 2020\n- Stable imaging\n- Maintained cognitive function\n- Diabetes well-controlled\nKPS: 100 | ECOG: 0\n\nFOLLOW-UP - March 2021\n- Small area of enhancement noted on MRI\n- Watchful waiting approach\nKPS: 90 | ECOG: 1\n\nURGENT VISIT - September 2021\n- New onset headaches\n- MRI shows tumor recurrence (1.2cm)\n- Recommended repeat surgery\nKPS: 80 | ECOG: 1\n\nSECOND SURGERY - October 2021\n- Complete resection achieved\n- Post-operative radiation recommended\nKPS: 70 | ECOG: 2\n\nRADIATION ONCOLOGY - December 2021\n- Completed fractionated RT\n- Well-tolerated\nKPS: 75 | ECOG: 1\n\nFOLLOW-UP - March 2022\n- Post-radiation changes on MRI\n- Improved symptoms\nKPS: 85 | ECOG: 1\n\nFOLLOW-UP - March 2023\n- Stable imaging\n- Maintained function\nKPS: 90 | ECOG: 1\n\nLATEST FOLLOW-UP - January 2024\n- No evidence of recurrence\n- Continues research work\n- Diabetes stable\nKPS: 95 | ECOG: 1\n\nTreatment Summary:\n- Initial surgical resection (2018)\n- Recurrence managed with second surgery + RT (2021)\n- Regular monitoring with q6month MRI\n- Maintained high functional status throughout\n\nCurrent Status:\n- Disease-free\n- Excellent functional status\n- Continues professional work\n- Regular monitoring planned\n\nFinal KPS: 95 | ECOG: 1\n\nNote: Aggressive early intervention and close monitoring strategy proved successful in maintaining patient's professional and functional status despite recurrence. Occupation as researcher and cognitive demands influenced treatment timing and approach.",
+        "conservative": "CLINICAL NOTES - NEUROSURGERY DEPARTMENT\nPatient ID: [REDACTED]\n66-year-old male researcher with WHO Grade I parasagittal meningioma\n\nInitial Visit - March 15, 2018\nChief Complaint: Progressive headaches, mild right leg weakness, cognitive changes\nAssessment: MRI reveals 0.5cm parasagittal meningioma. Given size, location, and WHO Grade I status, recommending conservative management with close monitoring.\nPlan: Watchful waiting approach. Serial imaging every 6 months.\nKPS: 90 ECOG: 1\n\nFollow-up - September 20, 2018\nInterval History: Headaches stable with prophylactic management. Continuing research work.\nImaging: No significant change in tumor size.\nPlan: Continue monitoring. Optimize diabetes management.\nKPS: 90 ECOG: 1\n\nFollow-up - March 18, 2019\nInterval History: Reports improved concentration with medication adjustment.\nImaging: Stable lesion size and characteristics.\nPlan: Extend monitoring interval to annual if next scan stable.\nKPS: 90 ECOG: 1\n\nFollow-up - March 15, 2020\nInterval History: Well-controlled symptoms. No new seizures.\nImaging: No growth. Stable appearance.\nPlan: Annual monitoring appropriate. Continue anticonvulsant prophylaxis.\nKPS: 85 ECOG: 1\n\nFollow-up - March 22, 2021\nInterval History: Minor balance issues noted. Diabetes well-controlled.\nImaging: Minimal edema increase, tumor stable.\nPlan: Continue conservative management. Physical therapy referral.\nKPS: 80 ECOG: 1\n\nFollow-up - March 14, 2022\nInterval History: Balance improved with PT. Research productivity maintained.\nImaging: No significant change.\nPlan: Maintain current management strategy.\nKPS: 85 ECOG: 1\n\nFollow-up - March 20, 2023\nInterval History: Increased fatigue, but managing work schedule.\nImaging: Slight increase in peritumoral edema, size stable.\nPlan: Increase dexamethasone temporarily. Continue monitoring.\nKPS: 75 ECOG: 2\n\nFollow-up - January 15, 2024\nInterval History: Improved energy levels. Managing research duties well.\nImaging: Stable appearance, no growth.\nAssessment: Conservative management successful over 6-year period.\nPlan: Continue annual monitoring. Maintain current medications.\nKPS: 80 ECOG: 1\n\nTreatment Summary:\n- Successfully managed with conservative approach over 6 years\n- Maintained professional activities with accommodations\n- Stable disease with minimal progression\n- Quality of life preserved through non-surgical management\n- Regular monitoring effective in tracking subtle changes\n\nCurrent Status:\nKPS Score: 80 - Able to perform normal activity with effort\nECOG Score: 1 - Restricted in physically strenuous activity but ambulatory\n\nRecommendations:\n1. Continue annual MRI surveillance\n2. Maintain anticonvulsant therapy\n3. Regular diabetes monitoring\n4. Ergonomic workplace adjustments as needed\n5. Regular physical therapy for balance maintenance\n6. Cognitive exercises to support research work"
+      }
+    },
+    {
+      "demographics": {
+        "age": 46,
+        "gender": "Male",
+        "blood_type": "A",
+        "occupation": {
+          "knowledge_worker": true,
+          "knowledge_worker_profession": "Software Developer",
+          "olfactory_profession": false,
+          "stage_artist": false
+        }
+      },
+      "medical_factors": {
+        "diabetes": false,
+        "pregnancy": false,
+        "obesity": true,
+        "medical_radiation_exposure": false
+      },
+      "clinical_data": {
+        "presenting_symptoms": [
+          "Progressive headaches over 6 months, worse in the morning",
+          "Recent onset of left leg weakness and subtle gait changes",
+          "Occasional episodes of confusion and difficulty concentrating while coding",
+          "Visual disturbances - intermittent blurring in right visual field",
+          "Two episodes of focal seizures affecting the left leg in past month",
+          "Increasing fatigue and irritability",
+          "Reports difficulty maintaining balance when standing for long periods"
+        ],
+        "medical_history": [
+          "BMI 34.2 - Class I Obesity",
+          "Mild hypertension diagnosed 2 years ago, managed with lifestyle modifications",
+          "History of chronic tension headaches treated with OTC medications",
+          "No prior neurological conditions",
+          "No history of cancer",
+          "No previous surgeries",
+          "Family history negative for brain tumors",
+          "Non-smoker, occasional alcohol use",
+          "Occupational history of prolonged screen time and sedentary work habits"
+        ],
+        "meningioma_grade": "WHO Grade 1",
+        "meningioma_details": "4 Parasagittal/Falx 33.5"
+      },
+      "clinical_notes": {
+        "aggressive": "CLINICAL NOTES - NEUROSURGERY DEPARTMENT\nPatient ID: M46-A-PS4\nPrimary Diagnosis: Parasagittal/Falx Meningioma\nWHO Grade: II\n\nINITIAL VISIT - March 15, 2018\nMRI reveals a 3.3cm parasagittal/falx meningioma with significant mass effect and surrounding edema. Location and symptom progression indicate need for immediate intervention. Patient's occupation requires high cognitive function; symptoms significantly impacting work performance.\n\nTreatment Decision: Recommend surgical resection due to size, location, and progressive neurological symptoms.\n\nPre-operative Assessment:\n- KPS Score: 70\n- ECOG Score: 1\n\nSURGICAL INTERVENTION - April 2, 2018\nProcedure: Complete surgical resection attempted\nFindings: WHO Grade II meningioma\nPost-op KPS: 60\nComplications: Mild post-operative edema\n\nFOLLOW-UP VISIT - July 15, 2018\nImproved symptoms. Post-operative MRI shows near-total resection (Simpson Grade II).\nKPS Score: 80\nPlan: Initiate adjuvant radiation therapy\n\nRADIATION THERAPY - August-September 2018\nCompleted fractionated RT\nWell-tolerated with minimal side effects\n\nFOLLOW-UP - January 10, 2019\nMRI stable, improved neurological symptoms\nKPS Score: 90\nPlan: Continue q3 month monitoring\n\n2019-2020 QUARTERLY FOLLOW-UPS\nAll MRIs stable, patient returned to work\nKPS maintained at 90-95\n\nRECURRENCE NOTED - March 15, 2021\nSmall focus of enhancement at resection margin\nKPS Score: 85\nDecision: SRS to focal area\n\n2021-2022 MONITORING\nQuarterly MRIs show stable disease\nPatient maintaining full work schedule\nKPS Score: 95\n\nCONCERNING CHANGES - June 10, 2023\nNew enhancement noted\nKPS Score: 75\nDecision: Second surgical intervention\n\nSECOND SURGERY - July 2023\nSuccessful gross total resection\nPost-op KPS: 65\nPathology confirms Grade II\n\nCURRENT STATUS - January 2024\nStable imaging\nReturned to work full-time\nKPS Score: 90\nECOG Score: 0\n\nMONITORING PROTOCOL:\n- MRI with contrast every 3 months\n- Neurological examinations quarterly\n- Annual neuropsychological testing\n\nKPS Score Range (2018-2024): 60-95\nECOG Score Range: 0-1\n\nTreatment approach prioritized early intervention due to:\n1. Patient's young age\n2. Cognitive demands of occupation\n3. Progressive neurological symptoms\n4. WHO Grade II classification\n5. Location and size of tumor\n\nLong-term prognosis remains guarded due to Grade II status, requiring continued vigilant monitoring.",
+        "conservative": "CLINICAL NOTES - NEUROSURGERY DEPARTMENT\nPatient ID: M46-PS-2018\nDiagnosis: Right Parasagittal/Falx Meningioma (WHO Grade I)\nBlood Type: A\nOccupation: Software Developer\n\nINITIAL VISIT - March 15, 2018\nPresenting Symptoms: Progressive neurological symptoms including morning headaches, left leg weakness, visual disturbances, and focal seizures. Patient reports occupational impact with concentration difficulties during coding tasks.\nImaging: MRI reveals 3.3cm parasagittal/falx meningioma with minimal surrounding edema.\nAssessment: Given size and location, recommending conservative management with close monitoring.\nPlan: \n- Anti-epileptic medication (Levetiracetam 500mg BID)\n- Dexamethasone 4mg daily for edema management\n- Occupational modifications: ergonomic workspace assessment, regular breaks\nKPS Score: 80\n\nFOLLOW-UP - September 20, 2018\nSymptoms: Improved headaches, stable leg weakness\nImaging: No significant growth\nPlan: Continue current management\nKPS Score: 85\n\nANNUAL REVIEW - March 12, 2019\nSymptoms: Well-controlled seizures, adapted work routine\nImaging: Stable tumor size\nPlan: Maintain current medication regimen\nKPS Score: 90\n\nFOLLOW-UP - March 10, 2020\nCOVID-19 Telehealth Visit\nSymptoms: Reports increased screen time due to remote work\nPlan: Added blue light filters, structured breaks\nKPS Score: 85\n\nANNUAL REVIEW - April 15, 2021\nSymptoms: Mild progression of visual symptoms\nImaging: Minimal growth (0.2cm)\nPlan: Increased monitoring frequency to 4-monthly\nKPS Score: 75\n\nFOLLOW-UP - August 20, 2022\nSymptoms: Balance issues affecting daily activities\nImaging: Tumor size 3.7cm\nDiscussion: Reviewed surgical options, patient prefers continued conservative management\nPlan: Physical therapy referral\nKPS Score: 70\n\nURGENT VISIT - January 10, 2023\nSymptoms: Acute deterioration in left-sided weakness\nImaging: Increased peritumoral edema\nPlan: Increased dexamethasone, considering radiation therapy\nKPS Score: 60\n\nFOLLOW-UP - June 15, 2023\nPost-radiation assessment\nTreatment: Completed fractionated RT\nSymptoms: Improving strength, returned to modified work schedule\nKPS Score: 75\n\nRECENT VISIT - January 20, 2024\nSymptoms: Stable neurological status\nImaging: Post-radiation changes, no progression\nPlan: Continue 6-monthly monitoring\nKPS Score: 80\n\nCurrent Status:\n- KPS Score: 80/100\n- ECOG Score: 1\n- WHO Grade: I\n- Treatment Strategy: Conservative management with radiation intervention\n- Quality of Life: Maintained with modifications\n\nMonitoring Protocol:\n- MRI every 6 months\n- Neurological assessment quarterly\n- Occupational therapy ongoing\n- Regular blood pressure monitoring\n\nLong-term Recommendations:\n1. Maintain weight management program\n2. Continue modified work schedule\n3. Regular exercise within limitations\n4. Stress management techniques\n5. Sleep hygiene optimization\n\nThe conservative approach has allowed the patient to maintain professional activities with appropriate modifications. While tumor growth necessitated radiation therapy in 2023, overall quality of life has been preserved through minimal intervention strategies."
+      }
+    },
+    {
+      "demographics": {
+        "age": 57,
+        "gender": "Male",
+        "blood_type": "O",
+        "occupation": {
+          "knowledge_worker": false,
+          "knowledge_worker_profession": null,
+          "olfactory_profession": false,
+          "stage_artist": false
+        }
+      },
+      "medical_factors": {
+        "diabetes": false,
+        "pregnancy": false,
+        "obesity": true,
+        "medical_radiation_exposure": false
+      },
+      "clinical_data": {
+        "presenting_symptoms": [
+          "Progressive headaches over 3 months, worse in the morning",
+          "Recent onset of focal seizures affecting right hand",
+          "Intermittent visual disturbances - brief episodes of blurred vision",
+          "Mild right-sided weakness noticed during fine motor tasks",
+          "Occasional episodes of confusion and word-finding difficulties",
+          "Balance issues when walking, particularly when turning"
+        ],
+        "medical_history": [
+          "BMI 33.2 - Class I Obesity",
+          "Hypertension diagnosed 5 years ago, controlled with lisinopril",
+          "History of migraine headaches, but notes recent change in headache pattern",
+          "Previous head trauma from car accident 10 years ago",
+          "No prior history of seizures or neurological disorders",
+          "Family history negative for brain tumors",
+          "Current medications: lisinopril 20mg daily, recently started levetiracetam 500mg BID for seizure control",
+          "No history of radiation exposure",
+          "Surgical history: appendectomy (1990), cholecystectomy (2015)"
+        ],
+        "meningioma_grade": "WHO Grade 2",
+        "meningioma_details": "2 Convexity 4.2"
+      },
+      "clinical_notes": {
+        "aggressive": "CLINICAL NOTES - NEUROSURGERY SERVICE\nPatient ID: M57-O-CM42\nDiagnosis: WHO Grade II Convexity Meningioma (4.2cm)\n\nINITIAL VISIT - March 15, 2018\nPresenting Symptoms: Progressive neurological symptoms including morning headaches, focal seizures (right hand), visual disturbances, right-sided weakness, cognitive changes, and gait instability. Symptoms suggest significant mass effect.\nImaging: Initial MRI reveals 4.2cm convexity meningioma with significant peritumoral edema and mass effect on adjacent cortex.\nAssessment: Given size, symptomatology, and location, immediate surgical intervention recommended.\nKPS Score: 80\nECOG: 1\n\nSURGICAL INTERVENTION - April 2, 2018\nProcedure: Simpson Grade II resection of convexity meningioma\nFindings: Tumor showed aggressive features; some dural attachment remained\nPost-op Course: Uncomplicated\nKPS Score: 70\nECOG: 2\n\nFOLLOW-UP - July 15, 2018 (3 months post-op)\nSymptoms: Improvement in headaches and seizures. Mild residual weakness.\nImaging: Post-op MRI shows near-total resection with minimal residual\nPlan: Continue anticonvulsants, initiate physical therapy\nKPS Score: 85\nECOG: 1\n\nFOLLOW-UP - January 10, 2019 (9 months post-op)\nSymptoms: Continued improvement. No new seizures.\nImaging: Stable residual disease\nPlan: Continue monitoring q3 months\nKPS Score: 90\nECOG: 1\n\nFOLLOW-UP - January 15, 2020\nSymptoms: New onset headaches\nImaging: Small area of recurrence (1.2cm)\nPlan: Initiate fractionated radiotherapy\nKPS Score: 85\nECOG: 1\n\nFOLLOW-UP - July 20, 2020 (post-radiation)\nResponse: Good response to radiation\nImaging: Stable disease\nKPS Score: 90\nECOG: 1\n\nFOLLOW-UP - August 5, 2021\nSymptoms: Stable\nImaging: No progression\nKPS Score: 95\nECOG: 0\n\nFOLLOW-UP - September 12, 2022\nSymptoms: New cognitive complaints\nImaging: Small area of progression (1.5cm)\nPlan: Surgical re-intervention recommended\nKPS Score: 75\nECOG: 1\n\nSECOND SURGERY - October 3, 2022\nProcedure: Repeat resection\nComplications: Post-op infection requiring extended antibiotics\nKPS Score: 60\nECOG: 2\n\nFOLLOW-UP - March 15, 2023\nSymptoms: Recovering well post-infection\nImaging: No evidence of disease\nKPS Score: 80\nECOG: 1\n\nLATEST FOLLOW-UP - January 10, 2024\nStatus: Stable disease, maintained function\nImaging: No evidence of recurrence\nCurrent Medications: Levetiracetam 500mg BID, Lisinopril 20mg daily\nKPS Score: 90\nECOG: 1\n\nTREATMENT SUMMARY:\n- Initial Simpson Grade II resection (2018)\n- Adjuvant radiation therapy (2020)\n- Second surgical intervention (2022)\n- Regular imaging surveillance\n\nOverall KPS Range: 60-95\nOverall ECOG Range: 0-2\n\nCURRENT MANAGEMENT PLAN:\n1. Continue q3 month MRI surveillance\n2. Maintain anticonvulsant therapy\n3. Regular neurocognitive assessment\n4. Weight management program\n5. Blood pressure monitoring\n\nNote: Patient's obesity and hypertension were considered in treatment planning. Aggressive early intervention strategy has resulted in good disease control despite Grade II histology.",
+        "conservative": "CLINICAL NOTES - NEUROSURGERY DEPARTMENT\nPatient ID: M57-O-CM42\nWHO Grade: II Convexity Meningioma (4.2cm)\n\nINITIAL VISIT - March 15, 2018\nPresenting with progressive neurological symptoms including focal seizures, visual disturbances, and balance issues. MRI reveals 4.2cm convexity meningioma. Given patient's obesity and controlled hypertension, recommending conservative management with close monitoring.\nKPS: 80 | ECOG: 1\n\nTREATMENT PLAN:\n- Continue levetiracetam 500mg BID\n- Monthly neurological assessments for first 3 months\n- MRI surveillance every 3 months initially\n- Blood pressure monitoring\n- Weight management referral\n\nFOLLOW-UP - June 20, 2018\nStable symptoms. Seizures well-controlled. Minor improvement in balance.\nMRI: No significant change in tumor size\nKPS: 85 | ECOG: 1\n\nFOLLOW-UP - December 12, 2018\nMild progression of visual symptoms. Tumor stable on imaging.\nAdjusted levetiracetam to 750mg BID\nKPS: 80 | ECOG: 1\n\nANNUAL REVIEW - March 5, 2019\nTumor showing minimal growth (4.3cm). Symptoms stable.\nContinue conservative management.\nKPS: 75 | ECOG: 1\n\nFOLLOW-UP - March 10, 2020\nCOVID-19 Telehealth consultation\nReports increased headaches\nRemote monitoring plan implemented\nKPS: 70 | ECOG: 2\n\nURGENT ASSESSMENT - September 15, 2020\nIncreased seizure frequency\nMRI shows tumor growth to 4.7cm\nDiscussing surgical options but maintaining conservative approach\nKPS: 65 | ECOG: 2\n\nFOLLOW-UP - March 20, 2021\nStabilization of symptoms with medication adjustment\nContinuing watchful waiting\nKPS: 70 | ECOG: 2\n\nANNUAL REVIEW - April 5, 2022\nStable disease. Patient managing daily activities.\nMRI unchanged from previous\nKPS: 75 | ECOG: 1\n\nFOLLOW-UP - May 12, 2023\nMinor improvement in balance issues\nMaintaining conservative management\nKPS: 80 | ECOG: 1\n\nCURRENT STATUS - January 15, 2024\nStable disease with well-controlled symptoms\nMRI shows no significant change (4.7cm)\nKPS: 85 | ECOG: 1\n\nMANAGEMENT SUMMARY:\n- Successfully maintained conservative approach over 6 years\n- Periodic MRI surveillance showing slow progression\n- Quality of life preserved through medication management\n- Patient able to maintain employment with accommodations\n- Weight management ongoing challenge\n\nCURRENT RECOMMENDATIONS:\n1. Continue current medication regimen\n2. MRI every 6 months\n3. Regular BP monitoring\n4. Weight management program\n5. Consider surgical intervention only if significant progression\n\nFinal Status:\nKPS Range over monitoring period: 65-85\nCurrent KPS: 85\nCurrent ECOG: 1\n\nNote: Conservative management has proven successful in this case, with patient maintaining good functional status despite WHO Grade II classification. Will continue close monitoring with low threshold for intervention if status changes."
+      }
+    },
+    {
+      "demographics": {
+        "age": 62,
+        "gender": "Female",
+        "blood_type": "AB",
+        "occupation": {
+          "knowledge_worker": true,
+          "knowledge_worker_profession": "Data Scientist",
+          "olfactory_profession": false,
+          "stage_artist": false
+        }
+      },
+      "medical_factors": {
+        "diabetes": false,
+        "pregnancy": false,
+        "obesity": false,
+        "medical_radiation_exposure": false
+      },
+      "clinical_data": {
+        "presenting_symptoms": [
+          "Progressive headaches increasing in frequency over 6 months",
+          "New onset focal seizures affecting left leg",
+          "Subtle personality changes noted by family - increased irritability and emotional lability",
+          "Declining cognitive performance at work, especially with complex data analysis tasks",
+          "Mild left-sided weakness and coordination issues",
+          "Visual disturbances - occasional double vision",
+          "Morning headaches with nausea",
+          "Difficulty maintaining balance when walking"
+        ],
+        "medical_history": [
+          "Hypertension - controlled with lisinopril 10mg daily",
+          "Migraine headaches since age 35 - previously well-managed with sumatriptan",
+          "Surgical menopause at age 48 - total hysterectomy due to fibroids",
+          "History of hormone replacement therapy for 5 years post-hysterectomy",
+          "Family history of breast cancer (mother)",
+          "No prior neurological conditions",
+          "No history of head trauma or radiation exposure",
+          "Regular health screenings with normal results until current presentation"
+        ],
+        "meningioma_grade": "WHO Grade 2",
+        "meningioma_details": "6 Parasagittal/Falx 113.1"
+      },
+      "clinical_notes": {
+        "aggressive": "NEUROSURGICAL CLINICAL NOTES\nPatient ID: F62-AB-DS\nDiagnosis: WHO Grade II Parasagittal/Falx Meningioma\nLocation: Right parasagittal region with falx involvement\nSize: 113.1 mm maximum diameter\n\nINITIAL VISIT - March 15, 2018\nPresenting Status:\n- Progressive neurological symptoms including focal seizures\n- Cognitive decline affecting work performance\n- Significant mass effect with peritumoral edema\nInitial KPS: 70 | ECOG: 2\n\nMRI Findings:\n- Large parasagittal meningioma with significant mass effect\n- Moderate to severe peritumoral edema\n- Evidence of superior sagittal sinus involvement\n\nTreatment Plan:\n1. Immediate surgical intervention recommended\n2. Pre-surgical optimization with dexamethasone 4mg QID\n3. Anti-epileptic prophylaxis with Levetiracetam 500mg BID\n\nSURGICAL NOTE - April 2, 2018\nProcedure: Simpson Grade II resection\n- Near-total resection achieved\n- Minor residual tumor at sinus interface\nPost-op KPS: 60 | ECOG: 2\n\nFOLLOW-UP - July 15, 2018\n- Improved neurological status\n- Residual mild left-sided weakness\n- Continuing rehabilitation\nKPS: 80 | ECOG: 1\n\nFOLLOW-UP - January 10, 2019\n- MRI shows stable residual disease\n- Cognitive function improving\n- Returned to modified work schedule\nKPS: 90 | ECOG: 1\n\nFOLLOW-UP - July 2019\n- Early signs of progression in residual tumor\n- Recommended adjuvant radiotherapy\nKPS: 85 | ECOG: 1\n\nRADIATION ONCOLOGY - August 2019\n- Completed fractionated RT\n- 54 Gy in 30 fractions\nKPS: 80 | ECOG: 1\n\nANNUAL FOLLOW-UP - April 2020\n- Stable disease\n- Full return to work\n- Maintained cognitive function\nKPS: 90 | ECOG: 1\n\nFOLLOW-UP - May 2021\n- MRI shows minor progression\n- New focus of enhancement\nKPS: 85 | ECOG: 1\n\nSECOND SURGERY - July 2021\n- Resection of recurrent tumor\n- Simpson Grade III\nKPS: 70 | ECOG: 2\n\nFOLLOW-UP - January 2022\n- Post-surgical recovery optimal\n- Returned to work\nKPS: 85 | ECOG: 1\n\nFOLLOW-UP - December 2022\n- Stable disease\n- Maintaining work performance\nKPS: 90 | ECOG: 1\n\nCURRENT STATUS - January 2024\n- Stable disease on imaging\n- Maintained cognitive function\n- Regular monitoring continues\nCurrent KPS: 90 | ECOG: 1\n\nTREATMENT SUMMARY:\n- Initial aggressive surgical approach\n- Early adjuvant radiation\n- Proactive management of recurrence\n- Regular 3-monthly MRI surveillance\n- Successful maintenance of professional function\n\nFinal KPS: 90 | ECOG: 1\nPrognosis: Favorable with continued surveillance\n\nNote: Treatment strategy prioritized preservation of cognitive function critical for patient's data science career. Aggressive early intervention and proactive monitoring have resulted in optimal outcome.",
+        "conservative": "CLINICAL NOTES - NEUROSURGERY DEPARTMENT\nPatient ID: [REDACTED]\nDemographics: 62-year-old female, Blood Type AB\nOccupation: Data Scientist\nWHO Grade: I (Parasagittal/Falx Meningioma)\n\nINITIAL VISIT - March 15, 2018\nPresenting Symptoms: Progressive headaches, focal seizures (left leg), personality changes, cognitive decline affecting work performance, left-sided weakness, diplopia, morning headaches with nausea, gait instability.\nImaging: MRI reveals 6.0 cm parasagittal/falx meningioma\nAssessment: Given size and symptoms, but considering patient's preference for conservative management\nKPS Score: 80\nECOG: 1\nPlan: Initiate watchful waiting protocol with close monitoring\n- Anti-epileptic: Levetiracetam 500mg BID\n- Dexamethasone 4mg BID with taper\n- Monthly neurological assessments for first 3 months\n\nFOLLOW-UP - June 20, 2018\nStatus: Improved symptom control\n- Seizures well-controlled\n- Headaches reduced with steroid therapy\n- Cognitive function stable\nKPS Score: 85\nECOG: 1\nPlan: Continue conservative management\n- Maintain current medications\n- Quarterly MRI surveillance\n\nANNUAL REVIEW - March 12, 2019\nStatus: Stable disease\nImaging: No significant growth\nKPS Score: 90\nECOG: 0\nPlan: Extended monitoring interval\n- Biannual MRI\n- Optimize work environment (ergonomic assessment)\n\nFOLLOW-UP - September 15, 2020\nStatus: Mild symptom progression\n- Increased headache frequency\n- Minor visual changes\nImaging: 2mm growth over 18 months\nKPS Score: 75\nECOG: 1\nPlan: Adjust management strategy\n- Increase steroid dose temporarily\n- Consider workplace accommodations\n\nURGENT VISIT - February 10, 2021\nStatus: Acute symptom exacerbation\n- Severe headaches\n- Worsening left-sided weakness\nKPS Score: 60\nECOG: 2\nPlan: Hospital admission\n- IV steroids\n- Neurosurgical consultation for possible intervention\n\nFOLLOW-UP - April 5, 2021\nStatus: Post-successful stereotactic radiosurgery\n- Improved symptoms\n- Returning to work part-time\nKPS Score: 75\nECOG: 1\nPlan: Continue monitoring\n- Monthly follow-up\n- Gradual return-to-work protocol\n\nANNUAL REVIEW - March 20, 2022\nStatus: Good recovery\nImaging: Stable post-radiation changes\nKPS Score: 85\nECOG: 1\nPlan: Maintain surveillance\n- Return to biannual imaging\n- Continue anti-epileptics\n\nFOLLOW-UP - September 15, 2023\nStatus: Maintained improvement\n- Full work capacity\n- Minimal symptoms\nKPS Score: 90\nECOG: 0\nPlan: Long-term monitoring\n- Annual imaging\n- Continue current medications\n\nRECENT VISIT - January 10, 2024\nStatus: Stable disease control\nImaging: No progression\nKPS Score: 95\nECOG: 0\nPlan: Continue conservative approach\n- Maintain annual imaging\n- Consider gradual anti-epileptic reduction\n\nOverall Disease Course Summary:\n- Initial conservative management\n- Single intervention (SRS) when needed\n- Successful return to professional activities\n- Current stable disease control\n\nFinal KPS/ECOG Trends:\nKPS Score Range: 60-95 (Currently 95)\nECOG Score Range: 0-2 (Currently 0)\n\nTreatment Strategy Successfully Balanced:\n- Professional needs as Data Scientist\n- Quality of life preservation\n- Minimal intervention approach\n- Regular monitoring protocol"
+      }
+    },
+    {
+      "demographics": {
+        "age": 40,
+        "gender": "Female",
+        "blood_type": "A",
+        "occupation": {
+          "knowledge_worker": true,
+          "knowledge_worker_profession": "Librarian",
+          "olfactory_profession": "Food Critic",
+          "stage_artist": false
+        }
+      },
+      "medical_factors": {
+        "diabetes": true,
+        "pregnancy": false,
+        "obesity": false,
+        "medical_radiation_exposure": false
+      },
+      "clinical_data": {
+        "presenting_symptoms": [
+          "Intermittent headaches, gradually increasing in frequency over 6 months",
+          "Mild right-sided facial numbness",
+          "Occasional episodes of blurred vision when reading",
+          "Reports difficulty concentrating during food reviews",
+          "No seizures or focal neurological deficits"
+        ],
+        "medical_history": [
+          "Type 2 Diabetes diagnosed 5 years ago, well-controlled with Metformin (HbA1c 6.8%)",
+          "Migraine headaches since age 30, managed with sumatriptan PRN",
+          "Hypertension diagnosed 2 years ago, controlled with lisinopril",
+          "No prior brain injuries or neurological conditions",
+          "No family history of brain tumors",
+          "Meningioma discovered incidentally during MRI for headache workup",
+          "Regular ophthalmology check-ups due to diabetes - last exam 3 months ago normal",
+          "No prior surgeries",
+          "No radiation exposure history"
+        ],
+        "meningioma_grade": "WHO Grade 1",
+        "meningioma_details": "1 Convexity 0.5"
+      },
+      "clinical_notes": {
+        "aggressive": "CLINICAL NOTES - NEUROSURGERY DEPARTMENT\nPatient ID: F40-A-DM\nPrimary Diagnosis: Right Frontal Convexity Meningioma (WHO Grade I)\n\nINITIAL VISIT - March 15, 2018\nPresenting Complaint: Incidental finding during headache workup\nImaging: MRI reveals 0.5cm right frontal convexity meningioma\nAssessment: Small WHO Grade I meningioma with mild mass effect\nKPS: 90 | ECOG: 0\n\nPlan: Given patient's occupation requiring cognitive acuity (librarian/food critic), recommend proactive monitoring with potential early intervention.\n- MRI q3 months for first year\n- Neuropsychological baseline testing\n- Continue diabetes management\n\nFOLLOW-UP - June 20, 2018\nInterval imaging shows stability\nKPS: 90 | ECOG: 0\nPlan: Continue monitoring\n\nFOLLOW-UP - December 5, 2018\nGrowth noted to 0.7cm\nSymptoms: Increasing headache frequency\nKPS: 85 | ECOG: 1\nPlan: Discuss surgical intervention options\n\nSURGICAL INTERVENTION - February 12, 2019\nProcedure: Complete microsurgical resection\nPost-op course: Uncomplicated\nKPS: 70 | ECOG: 2\n\nFOLLOW-UP - May 15, 2019\nExcellent recovery\nReturned to work\nKPS: 90 | ECOG: 0\nPlan: MRI q6 months\n\nANNUAL FOLLOW-UP - February 20, 2020\nNo recurrence\nStable symptoms\nKPS: 95 | ECOG: 0\n\nFOLLOW-UP - March 10, 2021\nSmall focus of enhancement at resection site\nKPS: 85 | ECOG: 1\nPlan: Increased monitoring frequency\n\nFOLLOW-UP - September 15, 2022\nStable imaging\nMaintaining work activities\nKPS: 90 | ECOG: 0\n\nFOLLOW-UP - March 20, 2023\nNo progression\nWell-controlled diabetes\nKPS: 95 | ECOG: 0\n\nLATEST FOLLOW-UP - January 10, 2024\nImaging: Stable post-surgical changes\nSymptoms: Resolved\nOccupational function: Full capacity\nKPS: 100 | ECOG: 0\n\nTreatment Summary:\n- Early surgical intervention chosen due to:\n  1. Occupation requiring cognitive precision\n  2. Young age\n  3. Early symptom progression\n- Excellent outcome with no recurrence\n- Maintained diabetes control throughout\n\nCurrent Status:\nKPS Score: 100 - Normal activity, no evidence of disease\nECOG Score: 0 - Fully active\n\nLong-term Plan:\n- Annual MRI surveillance\n- Continue diabetes management\n- Regular neurological assessments\n- Maintain current occupational activities\n\nNote: Early intervention strategy proved successful in this case, allowing patient to maintain high-functioning professional activities with minimal interruption.",
+        "conservative": "NEUROSURGICAL CLINICAL NOTES\n\nInitial Visit - March 15, 2018\nPatient: 40F, Blood Type A\nOccupation: Librarian and Food Critic\nWHO Grade: I (Convexity Meningioma)\nSize: 0.5 cm\n\nChief Complaint: Intermittent headaches, facial numbness, visual symptoms\n\nAssessment:\nIncidentally discovered small right convexity meningioma during headache workup. Given size, location, and WHO Grade I status, conservative management is warranted. Patient's occupational demands (reading, writing, food evaluation) require preservation of cognitive function.\n\nPlan:\n- Watchful waiting approach with serial imaging\n- MRI surveillance every 6 months initially\n- Continue current medications for comorbidities\n- Headache diary recommended\nKPS: 90 ECOG: 1\n\nFollow-up Visit - September 20, 2018\nTumor stable at 0.5 cm. Headaches improved with prophylactic management.\nPlan: Continue monitoring\nKPS: 90 ECOG: 1\n\nFollow-up Visit - March 18, 2019\nNo tumor growth. Patient reports better headache control.\nPlan: Extend MRI interval to annual if stable at next visit\nKPS: 95 ECOG: 0\n\nFollow-up Visit - September 15, 2019\nStable findings. Visual symptoms unchanged.\nPlan: Transition to annual MRI\nKPS: 95 ECOG: 0\n\nAnnual Visit - September 22, 2020\nMinimal growth to 0.6 cm. Patient maintaining work activities.\nPlan: Return to 6-month monitoring\nKPS: 90 ECOG: 1\n\nFollow-up Visit - March 25, 2021\nSize stable. Diabetes remains well-controlled.\nPlan: Continue current management\nKPS: 90 ECOG: 1\n\nAnnual Visit - March 18, 2022\nNo progression. Patient reports occasional headaches.\nPlan: Maintain annual surveillance\nKPS: 85 ECOG: 1\n\nAnnual Visit - March 20, 2023\nStable disease. Patient managing work responsibilities well.\nPlan: Continue annual imaging\nKPS: 90 ECOG: 1\n\nAnnual Visit - March 15, 2024\nTumor stable at 0.6 cm. Patient functioning well in both occupations.\nPlan: Maintain conservative approach with annual imaging\nKPS: 90 ECOG: 1\n\nSummary of KPS/ECOG Trends:\n- KPS ranged from 85-95 (predominantly 90)\n- ECOG maintained between 0-1\n- Patient maintained high functional status throughout observation period\n- Conservative management strategy successful in preserving quality of life and occupational function\n\nRecommendations:\n1. Continue annual MRI surveillance\n2. Maintain diabetes management\n3. Regular ophthalmology follow-up\n4. Consider intervention only if significant growth or new symptoms develop\n5. Continue headache prophylaxis as needed"
+      }
+    },
+    {
+      "demographics": {
+        "age": 62,
+        "gender": "Female",
+        "blood_type": "O",
+        "occupation": {
+          "knowledge_worker": true,
+          "knowledge_worker_profession": "Researcher",
+          "olfactory_profession": false,
+          "stage_artist": false
+        }
+      },
+      "medical_factors": {
+        "diabetes": false,
+        "pregnancy": false,
+        "obesity": false,
+        "medical_radiation_exposure": false
+      },
+      "clinical_data": {
+        "presenting_symptoms": [
+          "Progressive headaches over 4 months, worse in the morning",
+          "Recent onset of left leg weakness and subtle gait imbalance",
+          "Increasing difficulty with concentration and memory",
+          "Episodes of confusion while working on research papers",
+          "Two episodes of focal seizures affecting the left leg",
+          "Visual disturbances - intermittent blurring in right visual field",
+          "Personality changes noted by colleagues - increased irritability"
+        ],
+        "medical_history": [
+          "Hypertension - controlled with lisinopril 10mg daily",
+          "Migraine headaches since age 35, but pattern changed recently",
+          "Surgical history: Cholecystectomy 2010",
+          "Family history: Mother with breast cancer",
+          "No prior neurological conditions",
+          "No history of trauma or radiation exposure",
+          "Regular health screenings with normal results",
+          "No significant cognitive issues prior to current symptoms"
+        ],
+        "meningioma_grade": "WHO Grade 2",
+        "meningioma_details": "3 Parasagittal/Falx 14.1"
+      },
+      "clinical_notes": {
+        "aggressive": "NEUROSURGICAL CLINICAL NOTES\n\nInitial Visit - March 15, 2018\nPatient: 62-year-old female researcher\nPresenting Symptoms: Progressive neurological symptoms including headaches, left leg weakness, cognitive changes, and focal seizures\nImaging: Initial MRI reveals 14.1cm parasagittal/falx meningioma with significant mass effect\nWHO Grade: III (Anaplastic Meningioma)\nAssessment: Large aggressive meningioma requiring immediate intervention\nPlan: Urgent surgical resection recommended due to size, location, and symptom progression\nKPS: 70 ECOG: 2\n\nPre-operative Visit - March 20, 2018\nSurgical Planning: Complex resection planned with neuronavigation\nRisks discussed with patient including potential motor deficits\nPatient consented for surgery\nKPS: 65 ECOG: 2\n\nPost-operative Visit - April 10, 2018\nProcedure: Near-total resection achieved\nPathology confirms WHO Grade III\nPost-op imaging shows small residual tumor\nStarted on anticonvulsants\nPlan: Adjuvant radiation therapy\nKPS: 60 ECOG: 2\n\n3-Month Follow-up - July 2018\nPost-radiation assessment\nMild left leg weakness improving with PT\nMRI shows no progression\nKPS: 75 ECOG: 1\n\n6-Month Follow-up - October 2018\nImproved strength and gait\nContinuing rehabilitation\nQuarterly MRI surveillance initiated\nKPS: 80 ECOG: 1\n\n1-Year Follow-up - March 2019\nNew enhancement noted on MRI\nDecision for repeat surgery\nKPS: 75 ECOG: 1\n\nPost-second Surgery - May 2019\nComplete resection achieved\nStarted on systemic therapy\nKPS: 70 ECOG: 1\n\n2-Year Follow-up - March 2020\nStable imaging\nReturned to modified work schedule\nKPS: 85 ECOG: 1\n\n3-Year Follow-up - March 2021\nSmall recurrence noted\nGamma Knife radiosurgery performed\nKPS: 80 ECOG: 1\n\n4-Year Follow-up - March 2022\nPost-radiosurgery response favorable\nMaintaining work activities\nKPS: 85 ECOG: 1\n\n5-Year Follow-up - March 2023\nStable disease\nMinor cognitive complaints\nContinuing surveillance\nKPS: 80 ECOG: 1\n\nCurrent Visit - January 2024\nNew satellite lesion identified\nPlanning additional focused radiation\nMaintaining good functional status\nKPS: 75 ECOG: 1\n\nTreatment Summary (2018-2024):\n- Two surgical resections\n- Conventional radiation therapy\n- Gamma Knife radiosurgery\n- Ongoing surveillance\n- Multiple adjustments to anticonvulsant regimen\n\nCurrent Status:\nKPS Score Range: 60-85 (Currently 75)\nECOG Score Range: 1-2 (Currently 1)\n\nPrognosis: Guarded but maintaining functional independence. Continuing aggressive surveillance and intervention as needed. Patient's academic career has been maintained with modifications.",
+        "conservative": "CLINICAL NOTES - NEUROSURGERY DEPARTMENT\nPatient ID: [REDACTED]\nDemographics: 62F, Blood Type O\nOccupation: Research Scientist\n\nINITIAL VISIT - March 15, 2018\nPresenting Complaint: Progressive neurological symptoms over 4 months\nMRI Findings: 14.1cm parasagittal/falx meningioma, WHO Grade I\nInitial KPS: 80 ECOG: 1\n\nAssessment:\nLarge parasagittal meningioma with significant mass effect but stable neurological status. Given patient's professional background and preference for maintaining cognitive function, recommending conservative management with close monitoring.\n\nPlan:\n1. Watchful waiting protocol initiated\n2. MRI surveillance every 4 months initially\n3. Anti-epileptic medication: Levetiracetam 500mg BID\n4. Continue lisinopril 10mg daily\n5. Occupational therapy referral for adaptive strategies\n\nFOLLOW-UP - July 20, 2018\nStable symptoms. MRI shows no significant growth.\nKPS: 80 ECOG: 1\n\nFOLLOW-UP - December 5, 2018\nMinor headache improvement with medication adjustment.\nKPS: 85 ECOG: 1\n\nFOLLOW-UP - June 15, 2019\nMRI: Minimal growth (1mm). Symptoms stable.\nKPS: 80 ECOG: 1\n\nFOLLOW-UP - January 10, 2020\nIncreased headache frequency. MRI stable.\nModified anti-seizure regimen.\nKPS: 75 ECOG: 1\n\nFOLLOW-UP - August 20, 2020\nCOVID-19 Telehealth visit\nStable symptoms. Continue current management.\nKPS: 75 ECOG: 1\n\nFOLLOW-UP - March 15, 2021\nMRI shows 2mm growth. Discussing surgical options but patient prefers continued conservative management.\nKPS: 70 ECOG: 2\n\nFOLLOW-UP - September 30, 2021\nWorsening gait imbalance. Started physical therapy.\nKPS: 65 ECOG: 2\n\nFOLLOW-UP - February 15, 2022\nMRI shows additional 3mm growth. \nStrongly recommended surgical intervention.\nPatient still preferring conservative approach.\nKPS: 60 ECOG: 2\n\nFOLLOW-UP - August 30, 2022\nCognitive decline noted. Neuropsychological testing ordered.\nKPS: 55 ECOG: 2\n\nFOLLOW-UP - January 15, 2023\nPatient agreed to consider radiation therapy after significant functional decline.\nStarted steroid therapy.\nKPS: 50 ECOG: 3\n\nFOLLOW-UP - June 30, 2023\nPost-radiation therapy assessment\nModest improvement in symptoms\nKPS: 60 ECOG: 2\n\nLATEST FOLLOW-UP - January 10, 2024\nStable disease post-radiation\nImproved functional status\nWorking part-time with accommodations\nKPS: 70 ECOG: 1\n\nTREATMENT SUMMARY:\n- Conservative management with watchful waiting (2018-2022)\n- Radiation therapy in 2023\n- Symptomatic management throughout\n- Regular MRI surveillance\n- Multidisciplinary approach including neurology, radiation oncology, and rehabilitation services\n\nKPS Score Range: 50-85\nECOG Score Range: 1-3\n\nNote: Conservative approach maintained per patient preference until functional decline necessitated intervention. Professional background as researcher influenced decision-making throughout treatment course."
+      }
+    },
+    {
+      "demographics": {
+        "age": 65,
+        "gender": "Female",
+        "blood_type": "A",
+        "occupation": {
+          "knowledge_worker": true,
+          "knowledge_worker_profession": "Librarian",
+          "olfactory_profession": "Baker",
+          "stage_artist": false
+        }
+      },
+      "medical_factors": {
+        "diabetes": true,
+        "pregnancy": true,
+        "obesity": false,
+        "medical_radiation_exposure": false
+      },
+      "clinical_data": {
+        "presenting_symptoms": "Data generation failed",
+        "medical_history": "Data generation failed",
+        "meningioma_grade": "WHO Grade 2",
+        "meningioma_details": "1 Suprasellar/Parasellar 0.5"
+      },
+      "clinical_notes": {
+        "aggressive": "CLINICAL NOTES - NEUROSURGERY DEPARTMENT\n\nINITIAL VISIT - March 15, 2016\nPatient: 65F, Blood Type A\nOccupation: Librarian/Baker\nPMH: Diabetes, Currently pregnant (high-risk pregnancy)\n\nIMAGING FINDINGS:\n- MRI reveals 0.5cm suprasellar/parasellar meningioma\n- Well-circumscribed, homogeneous enhancement\n- No significant mass effect\n- WHO Grade I (suspected)\n\nASSESSMENT & PLAN:\nGiven patient's pregnancy status and location of tumor, recommending close monitoring with increased frequency. Pregnancy complicates immediate surgical intervention.\nKPS: 90 ECOG: 1\n\nFOLLOW-UP - September 20, 2016\nPost-pregnancy status\nRepeat MRI shows stable tumor size\nDiscussing surgical options given tumor location near critical structures\nKPS: 90 ECOG: 1\n\nFOLLOW-UP - March 10, 2017\nSlight tumor growth to 0.7cm\nRecommending surgical intervention due to:\n- Strategic location\n- Potential for optic apparatus compression\n- Patient's active lifestyle/occupational demands\nKPS: 85 ECOG: 1\n\nSURGICAL INTERVENTION - May 15, 2017\nUnderwent successful gross total resection\nPathology confirms WHO Grade I meningioma\nPost-op course uncomplicated\nKPS: 70 ECOG: 2\n\nFOLLOW-UP - November 20, 2017\nExcellent recovery\nNo residual tumor on imaging\nCleared to return to work with modifications\nKPS: 85 ECOG: 1\n\nANNUAL FOLLOW-UP - May 2018\nStable imaging\nWell-controlled diabetes\nFully returned to work\nKPS: 90 ECOG: 1\n\nANNUAL FOLLOW-UP - May 2019\nNo evidence of recurrence\nMaintaining regular activities\nKPS: 95 ECOG: 0\n\nANNUAL FOLLOW-UP - May 2020\nStable imaging\nNote: COVID-19 precautions discussed\nKPS: 95 ECOG: 0\n\nANNUAL FOLLOW-UP - May 2021\nContinued stability\nNo new symptoms\nKPS: 90 ECOG: 1\n\nANNUAL FOLLOW-UP - May 2022\nSmall area of enhancement noted\nClose monitoring warranted\nKPS: 85 ECOG: 1\n\nRECENT FOLLOW-UP - January 2024\nStable imaging\nMaintaining good quality of life\nContinue annual monitoring\nKPS: 90 ECOG: 1\n\nTREATMENT SUMMARY:\n- Early surgical intervention post-pregnancy\n- Successful gross total resection\n- Regular monitoring protocol\n- Good functional outcome\n- No evidence of significant recurrence\n\nFinal Status:\nKPS Score Range: 70-95 (Currently 90)\nECOG Score Range: 0-2 (Currently 1)\n\nNote: Early intervention strategy proved successful, allowing patient to maintain occupational activities with minimal interruption. Pregnancy and diabetes were successfully managed during treatment course.",
+        "conservative": "CLINICAL NOTES - NEUROSURGERY DEPARTMENT\nPatient ID: [Redacted]\n65-year-old female, Blood Type A\nOccupation: Librarian/Baker\nRelevant conditions: Diabetes, Pregnancy\n\nINITIAL VISIT - March 15, 2016\nPresenting Finding: Incidental discovery of suprasellar/parasellar meningioma (0.5 cm) on MRI\nWHO Grade: I\nAssessment: Small, asymptomatic meningioma. Given patient's pregnancy status and size of lesion, conservative management is warranted.\nPlan: Watchful waiting approach. Schedule follow-up MRI in 6 months post-delivery.\nKPS: 90 ECOG: 1\n\nFOLLOW-UP - December 10, 2016\nPost-partum status: Uncomplicated delivery\nImaging: Stable lesion size (0.5 cm)\nAssessment: No growth, patient asymptomatic\nPlan: Continue observation. Annual MRI surveillance.\nKPS: 90 ECOG: 1\n\nFOLLOW-UP - December 15, 2017\nImaging: No change in tumor size\nNotes: Patient managing well with work duties. No visual disturbances.\nPlan: Maintain annual surveillance\nKPS: 90 ECOG: 1\n\nFOLLOW-UP - January 10, 2019\nImaging: Minimal growth (0.6 cm)\nNotes: Diabetes well-controlled. No occupational limitations.\nPlan: Increase monitoring frequency to every 6 months\nKPS: 85 ECOG: 1\n\nFOLLOW-UP - June 20, 2019\nImaging: Stable at 0.6 cm\nNotes: Patient reports occasional headaches, managed with OTC medication\nPlan: Continue semi-annual monitoring\nKPS: 85 ECOG: 1\n\nFOLLOW-UP - January 15, 2020\nImaging: Stable lesion\nNotes: COVID-19 precautions discussed. Patient able to maintain work with modifications.\nPlan: Maintain current surveillance schedule\nKPS: 80 ECOG: 1\n\nFOLLOW-UP - February 10, 2021\nImaging: No significant change\nNotes: Patient retired from bakery work, maintains library position\nPlan: Continue monitoring\nKPS: 85 ECOG: 1\n\nFOLLOW-UP - March 5, 2022\nImaging: Stable lesion\nNotes: Well-adapted to reduced work schedule\nPlan: Return to annual monitoring given long-term stability\nKPS: 90 ECOG: 0\n\nFOLLOW-UP - March 20, 2023\nImaging: No change\nNotes: Excellent quality of life maintained\nPlan: Continue annual surveillance\nKPS: 90 ECOG: 0\n\nCURRENT VISIT - January 15, 2024\nImaging: Stable at 0.6 cm\nAssessment: 8-year history of stable disease with successful conservative management\nPlan: Maintain annual monitoring. Continue diabetes management.\nKPS: 90 ECOG: 0\n\nSUMMARY OF KPS/ECOG PROGRESSION:\n- Initial KPS: 90 \u2192 Current KPS: 90\n- Lowest KPS: 80 (during COVID-19 period)\n- Initial ECOG: 1 \u2192 Current ECOG: 0\n- Management Strategy: Successful conservative approach with preservation of quality of life and occupational function\n\nConservative management has proven successful with this patient, considering:\n1. Small tumor size with minimal growth\n2. Patient's ability to maintain work activities\n3. Well-controlled comorbidities\n4. Excellent quality of life preservation\n5. No significant neurological symptoms"
+      }
+    },
+    {
+      "demographics": {
+        "age": 61,
+        "gender": "Male",
+        "blood_type": "O",
+        "occupation": {
+          "knowledge_worker": true,
+          "knowledge_worker_profession": "Librarian",
+          "olfactory_profession": false,
+          "stage_artist": false
+        }
+      },
+      "medical_factors": {
+        "diabetes": false,
+        "pregnancy": false,
+        "obesity": false,
+        "medical_radiation_exposure": false
+      },
+      "clinical_data": {
+        "presenting_symptoms": "Mild intermittent headaches occurring 2-3 times per week for past 4 months, occasional dizziness when changing positions, incidental finding on MRI performed after minor fall at work, no seizures, no focal neurological deficits, no visual disturbances",
+        "medical_history": "Hypertension well-controlled with lisinopril 10mg daily for past 8 years, mild osteoarthritis in right knee, appendectomy at age 23, family history negative for brain tumors or cancers, no prior radiation exposure, annual physical examinations normal, no history of head trauma except recent minor fall, non-smoker, occasional alcohol use",
+        "meningioma_grade": "WHO Grade 1",
+        "meningioma_details": "1 Convexity 0.5"
+      },
+      "clinical_notes": {
+        "aggressive": "CLINICAL NOTES - NEUROSURGERY DEPARTMENT\nPatient ID: [REDACTED]\n61-year-old male, Blood Type O\nOccupation: Librarian\n\nINITIAL VISIT - March 15, 2018\nPresenting Symptoms:\n- Mild intermittent headaches (2-3x/week, 4-month duration)\n- Positional dizziness\n- Incidental finding post workplace fall\n- No seizures/focal deficits/visual changes\n\nImaging:\nMRI reveals 0.5cm right convexity meningioma (WHO Grade I)\nLocation favorable for surgical approach\n\nAssessment:\nGiven patient's active employment status and early symptoms, recommending proactive management despite small tumor size. Occupation requires sustained concentration and frequent position changes, making symptoms potentially impactful on work performance.\n\nPlan:\n1. Schedule surgical resection within 4-6 weeks\n2. Pre-operative imaging protocol initiated\n3. Monthly follow-up until surgery\nKPS: 90 ECOG: 1\n\nSURGICAL NOTE - May 2, 2018\nComplete microsurgical resection achieved\nSimpson Grade I resection\nNo complications\nKPS: 80 ECOG: 1\n\nPOST-OP FOLLOW-UP - June 15, 2018\nExcellent recovery\nHeadaches resolved\nCleared to return to work\nKPS: 90 ECOG: 0\n\nFOLLOW-UP - December 12, 2018\nNo recurrence on imaging\nAsymptomatic\nMaintaining regular work schedule\nKPS: 100 ECOG: 0\n\nANNUAL FOLLOW-UP - May 15, 2019\nContinued stable status\nNo new symptoms\nMRI: No recurrence\nKPS: 100 ECOG: 0\n\nANNUAL FOLLOW-UP - May 20, 2020\nStable imaging\nPatient maintaining normal activities\nSome fatigue reported, likely unrelated\nKPS: 90 ECOG: 0\n\nANNUAL FOLLOW-UP - June 3, 2021\nMinor enhancement on MRI at surgical site\nClose monitoring warranted\nOtherwise asymptomatic\nKPS: 85 ECOG: 1\n\nURGENT VISIT - December 15, 2021\nNew onset headaches\nMRI shows small area of enhancement\nRecommending increased monitoring frequency\nKPS: 75 ECOG: 1\n\nFOLLOW-UP - March 10, 2022\nEnhancement stable\nHeadaches improved with medication\nContinuing surveillance\nKPS: 80 ECOG: 1\n\nANNUAL FOLLOW-UP - April 5, 2023\nStable imaging\nNo new symptoms\nMaintaining work schedule\nKPS: 85 ECOG: 1\n\nRECENT FOLLOW-UP - January 15, 2024\nComplete stability for past year\nNo evidence of recurrence\nContinuing annual monitoring\nKPS: 90 ECOG: 0\n\nTREATMENT SUMMARY (2018-2024):\n- Initial proactive surgical intervention\n- Successful gross total resection\n- Brief period of concern (2021) resolved with monitoring\n- Current status: Stable with excellent functional status\n- Continuing annual surveillance\n\nFinal Status:\nKPS: 90/100 (Able to carry on normal activity with minor symptoms)\nECOG: 0 (Fully active, no restrictions)\n\nPrognosis: Excellent with continued monitoring\nNext Follow-up: Scheduled January 2025",
+        "conservative": "CLINICAL NOTES - NEUROSURGERY DEPARTMENT\nPatient ID: [Redacted]\n61-year-old male, Blood Type O\nOccupation: Librarian\nWHO Grade I Convexity Meningioma\n\nINITIAL VISIT - March 15, 2016\nPresenting Symptoms:\n- Mild intermittent headaches (2-3x/week, 4-month duration)\n- Positional dizziness\n- Incidental finding post workplace fall\n- No seizures/focal deficits/visual changes\n\nImaging:\nMRI reveals 0.5cm right convexity meningioma, WHO Grade I\nNo mass effect/edema\nNo venous sinus involvement\n\nAssessment & Plan:\nGiven small tumor size, minimal symptoms, and patient's stable condition, recommending conservative management with watchful waiting approach. Patient's occupation as librarian doesn't pose significant physical demands that would be impacted by current symptoms.\n\nManagement Plan:\n1. Follow-up MRI in 6 months\n2. Continue current medications\n3. Headache diary recommended\nKPS: 90 ECOG: 1\n\nFOLLOW-UP - September 20, 2016\nTumor stable at 0.5cm\nHeadaches improved with lifestyle modifications\nContinue monitoring\nNext MRI: 6 months\nKPS: 90 ECOG: 1\n\nFOLLOW-UP - March 14, 2017\nNo tumor growth\nSymptoms stable\nExtend imaging interval to annual\nKPS: 95 ECOG: 0\n\nANNUAL FOLLOW-UP - March 20, 2018\nMinimal growth to 0.6cm\nNo new symptoms\nContinue annual monitoring\nKPS: 90 ECOG: 1\n\nANNUAL FOLLOW-UP - March 15, 2019\nStable at 0.6cm\nPatient reports good quality of life\nMaintaining work schedule\nKPS: 90 ECOG: 1\n\nANNUAL FOLLOW-UP - March 18, 2020\nTumor stable\nNote: Telehealth visit due to COVID-19\nNo new concerns\nKPS: 85 ECOG: 1\n\nANNUAL FOLLOW-UP - March 16, 2021\nSlight growth to 0.7cm\nIncreased headache frequency\nRecommended:\n- Enhanced monitoring\n- Return to 6-month imaging intervals\nKPS: 80 ECOG: 1\n\nFOLLOW-UP - September 21, 2021\nStable at 0.7cm\nHeadaches improved with prophylactic medication\nContinue 6-month monitoring\nKPS: 85 ECOG: 1\n\nFOLLOW-UP - March 15, 2022\nNo further growth\nSymptoms well-controlled\nReturn to annual monitoring\nKPS: 90 ECOG: 1\n\nANNUAL FOLLOW-UP - March 14, 2023\nStable disease\nPatient maintaining normal activities\nContinue conservative management\nKPS: 90 ECOG: 1\n\nLATEST FOLLOW-UP - March 12, 2024\nTumor stable at 0.7cm\nPatient well-adjusted to monitoring protocol\nMaintaining full-time work as librarian\nNo interference with daily activities\n\nCurrent Management:\n- Continue annual MRI\n- Maintain headache diary\n- Regular blood pressure monitoring\n- Follow-up appointment scheduled for March 2025\n\nFinal KPS: 90 ECOG: 1\n\nSUMMARY OF KPS/ECOG PROGRESSION:\nKPS scores ranged from 80-95, reflecting overall good functional status with minor fluctuations during periods of symptom exacerbation. ECOG scores remained stable at 0-1, indicating patient maintained independent functioning throughout monitoring period.\n\nConservative management strategy has proven successful with minimal impact on patient's quality of life and occupational function over 8-year observation period."
+      }
+    },
+    {
+      "demographics": {
+        "age": 40,
+        "gender": "Female",
+        "blood_type": "A",
+        "occupation": {
+          "knowledge_worker": true,
+          "knowledge_worker_profession": "Software Developer",
+          "olfactory_profession": false,
+          "stage_artist": false
+        }
+      },
+      "medical_factors": {
+        "diabetes": false,
+        "pregnancy": false,
+        "obesity": false,
+        "medical_radiation_exposure": true
+      },
+      "clinical_data": {
+        "presenting_symptoms": [
+          "Progressive loss of sense of smell (anosmia) over past 8 months",
+          "Intermittent frontal headaches, worse in morning",
+          "Subtle personality changes noted by family members",
+          "Occasional episodes of nausea without vomiting",
+          "Mild visual disturbances - blurring of vision in both eyes",
+          "Recent onset of memory difficulties affecting work performance"
+        ],
+        "medical_history": [
+          "Received radiation therapy to head/neck region at age 15 for childhood lymphoma",
+          "Complete remission from lymphoma, no recurrence",
+          "Migraine headaches since age 25, managed with sumatriptan PRN",
+          "Surgical removal of ovarian cyst 5 years ago",
+          "Regular ophthalmology check-ups due to family history of glaucoma",
+          "No significant cardiovascular or endocrine conditions",
+          "No prior neurosurgical procedures",
+          "Non-smoker, occasional alcohol use"
+        ],
+        "meningioma_grade": "WHO Grade 1",
+        "meningioma_details": "3 Olfactory Groove 14.1"
+      },
+      "clinical_notes": {
+        "aggressive": "CLINICAL NOTES - NEUROSURGERY DEPARTMENT\nPatient ID: [REDACTED]\nDemographics: 40F, Blood Type A\nOccupation: Software Developer\n\nINITIAL VISIT - March 15, 2018\nPresenting Symptoms: Progressive anosmia (8 months), morning headaches, personality changes, nausea, bilateral visual disturbances, work-affecting memory issues.\nImaging: Initial MRI reveals 14.1cm olfactory groove meningioma, WHO Grade I\nAssessment: Large anterior skull base meningioma with significant mass effect\nPlan: Given size, symptoms, and patient's young age, recommending early surgical intervention\nKPS Score: 80/100\nECOG: 1\n\nSURGICAL INTERVENTION - April 2, 2018\nProcedure: Bifrontal craniotomy for meningioma resection\nOutcome: Simpson Grade II resection achieved\nPost-op Status: Stable\nKPS Score: 70/100\nECOG: 2\n\n3-MONTH FOLLOW-UP - July 2018\nStatus: Good recovery, residual anosmia\nImaging: Post-op MRI shows no residual tumor\nPlan: Quarterly MRI surveillance\nKPS Score: 85/100\nECOG: 1\n\n1-YEAR FOLLOW-UP - April 2019\nStatus: Return to work, improved memory function\nImaging: No recurrence\nPlan: Continue surveillance\nKPS Score: 90/100\nECOG: 0\n\n2-YEAR FOLLOW-UP - April 2020\nStatus: Small recurrence noted\nPlan: SRS to residual tumor\nKPS Score: 85/100\nECOG: 1\n\n3-YEAR FOLLOW-UP - April 2021\nStatus: Post-SRS, stable disease\nComplications: Radiation-induced edema\nPlan: Dexamethasone management\nKPS Score: 75/100\nECOG: 1\n\n4-YEAR FOLLOW-UP - April 2022\nStatus: Progressive tumor growth\nPlan: Second surgical intervention\nKPS Score: 65/100\nECOG: 2\n\n5-YEAR FOLLOW-UP - April 2023\nStatus: Post-second surgery\nComplications: CSF leak requiring repair\nPlan: Aggressive monitoring\nKPS Score: 60/100\nECOG: 2\n\nCURRENT STATUS - January 2024\nStatus: Stable disease, no new growth\nSymptoms: Persistent anosmia, otherwise functional\nPlan: Continue bi-annual MRI surveillance\nKPS Score: 80/100\nECOG: 1\n\nTREATMENT SUMMARY:\n- Initial Surgery: Simpson Grade II resection (2018)\n- Adjuvant SRS (2020)\n- Second Surgery (2022)\n- Regular MRI surveillance\n\nKPS Score Range: 60-90/100\nECOG Score Range: 0-2\n\nCONSIDERATIONS:\n1. History of radiation exposure increases recurrence risk\n2. Cognitive demands of software development role\n3. Young age warranting aggressive intervention\n4. Size and location of tumor\n5. Quality of life impact\n\nMONITORING PROTOCOL:\n- MRI with contrast every 6 months\n- Neuropsychological testing annually\n- Ophthalmology follow-up every 6 months\n- Regular endocrine screening",
+        "conservative": "CLINICAL NOTES - NEUROSURGERY DEPARTMENT\nPatient ID: [REDACTED]\nAge: 40\nGender: Female\nBlood Type: A\nOccupation: Software Developer\n\nINITIAL VISIT - March 15, 2018\nPresenting Symptoms: Progressive anosmia (8 months), frontal headaches, personality changes, nausea, bilateral visual disturbances, memory difficulties affecting work.\nImaging: MRI reveals 14.1cm olfactory groove meningioma, WHO Grade I\nAssessment: Given patient's history of prior radiation exposure and current stable neurological status, recommending conservative management with close monitoring.\nPlan: \n- MRI surveillance every 4 months initially\n- Neuropsychological evaluation baseline\n- Anti-epileptic prophylaxis not indicated at present\nKPS Score: 90\nECOG: 1\n\nFOLLOW-UP - July 20, 2018\nSymptoms stable. Continuing work with accommodations.\nImaging: No significant growth\nPlan: Continue monitoring\nKPS Score: 90\nECOG: 1\n\nFOLLOW-UP - February 12, 2019\nReports increased headache frequency\nImaging: Minimal growth (1mm)\nPlan: \n- Initiated prophylactic dexamethasone\n- Headache management optimization\nKPS Score: 85\nECOG: 1\n\nFOLLOW-UP - January 15, 2020\nVisual symptoms slightly progressed\nImaging: Growth of 2mm noted\nPlan: \n- Ophthalmology consultation\n- Discussing surgical options but maintaining conservative approach\nKPS Score: 80\nECOG: 1\n\nFOLLOW-UP - December 10, 2020\nIncreased cognitive difficulties affecting work\nImaging: Additional 2mm growth\nPlan: \n- Occupational therapy referral\n- Work modifications recommended\nKPS Score: 75\nECOG: 2\n\nFOLLOW-UP - June 15, 2021\nSymptoms stabilized with adaptations\nImaging: No new growth\nPlan: Continue current management\nKPS Score: 75\nECOG: 2\n\nFOLLOW-UP - March 20, 2022\nSome improvement in headache frequency\nImaging: Stable\nPlan: \n- Reduced steroid dosage\n- Maintaining work accommodations\nKPS Score: 80\nECOG: 1\n\nFOLLOW-UP - January 10, 2023\nWell-adapted to current limitations\nImaging: No progression\nPlan: Extended MRI interval to 6 months\nKPS Score: 85\nECOG: 1\n\nFOLLOW-UP - December 5, 2023\nStable symptoms, good quality of life\nImaging: No changes\nPlan: \n- Continue conservative management\n- Annual neuropsychological evaluation\nKPS Score: 85\nECOG: 1\n\nMOST RECENT VISIT - March 1, 2024\nOverall stable condition maintained\nImaging: No significant changes over past year\nPlan:\n- Continue current management strategy\n- Next MRI in 6 months\nKPS Score: 85\nECOG: 1\n\nSUMMARY OF KPS/ECOG PROGRESSION:\nKPS Score Range: 75-90 (Lowest during 2020-2021)\nECOG Score Range: 1-2 (Highest during 2020-2021)\n\nMANAGEMENT RATIONALE:\nConservative approach chosen due to:\n1. Prior radiation exposure history\n2. Stable growth pattern\n3. Successful adaptation to symptoms\n4. Preserved work capability with modifications\n5. Patient preference for non-surgical management"
+      }
+    }
+  ],
+  "metadata": {
+    "total_cases": 10,
+    "data_version": "1.0"
+  }
+}

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import MermaidDiagram from '@/components/MermaidDiagram';
 import CaseCard from '@/components/CaseCard';
-import meningiomaCases from '@/data/meningioma_cases_201124_v4.json';
+import meningiomaCases from '@/data/meningioma_cases_201124_v5.json';
 
 // Initial probabilities
 const initialP = {

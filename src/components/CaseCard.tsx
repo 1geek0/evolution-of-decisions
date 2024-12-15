@@ -17,6 +17,7 @@ interface CaseCardProps {
         //     follow_up: string;
         // };
         meningioma_grade: string;
+        meningioma_details: string;
     };
     clinicalNotes: {
         aggressive: string;
@@ -53,7 +54,7 @@ export default function CaseCard({ age, gender, clinicalData, clinicalNotes, isS
                         <div>
                             <h3 className="font-medium text-base">{age} y/o {gender}</h3>
                             <p className="text-sm text-gray-600 dark:text-gray-400">
-                                {clinicalData.meningioma_grade} Meningioma
+                                {clinicalData.meningioma_grade} Meningioma • {clinicalData.meningioma_details} cm
                             </p>
                         </div>
                         {isSelected && (
