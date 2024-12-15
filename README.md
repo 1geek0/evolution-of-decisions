@@ -7,7 +7,6 @@ Welcome to the **Evolution of Decisions** project! This innovative research tool
 - **Interactive Interface**: Select patient cases and visualize treatment decisions.
 - **Dynamic Probability Adjustments**: Adjust probabilities based on selected treatment approaches.
 - **Mermaid Diagrams**: Visualize decision paths using Mermaid.js.
-- **Responsive Design**: Enjoy a seamless experience across devices.
 
 ## Getting Started
 
