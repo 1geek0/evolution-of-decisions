@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import MermaidDiagram from '@/components/MermaidDiagram';
 import CaseCard from '@/components/CaseCard';
-import meningiomaCases from '@/data/meningioma_cases_201124_v3.json';
+import meningiomaCases from '@/data/meningioma_cases_201124_v4.json';
 
 // Initial probabilities
 const initialP = {
@@ -260,7 +260,7 @@ export default function Home() {
           <div className="p-4 border-b border-gray-200 dark:border-gray-700">
             <h2 className="font-semibold mb-2">Patient Cases</h2>
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-              Select up to 20 cases to analyze treatment paths. Each case represents a unique patient with different risk factors and symptoms.
+              Select up to 10 cases to analyze treatment paths. Each case represents a unique patient with different risk factors and symptoms.
             </p>
             <div className="space-y-2">
               <button
@@ -282,12 +282,12 @@ export default function Home() {
                 Reset Selection
               </button>
               <div className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                Selected cases: {selectedCases.length} / 20
+                Selected cases: {selectedCases.length} / 10
               </div>
             </div>
             {selectedCases.length === 20 && (
               <p className="text-sm text-amber-600 dark:text-amber-400 mt-2">
-                Maximum of 20 cases selected
+                Maximum of 10 cases selected
               </p>
             )}
           </div>

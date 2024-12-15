@@ -5,52 +5,54 @@ const anthropic = new Anthropic({
     apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
-const decisionTree = `    A[Initial MRI:\nSuspected Meningioma] --> B{{Symptomatic?}}
+const decisionTree = `flowchart TD
+    A[Initial MRI:\nSuspected Meningioma] --> B{{Decision Point 1:\nTreat as Symptomatic?}}
     
-    %% Asymptomatic Branch
-    B -->|{1-p['symptomatic']:.1%}| C{{Risk Assessment}}
-    C -->|{1-p['high_risk']:.1%}| D[Watch & Scan]
-    C -->|{p['high_risk']:.1%}| E[Consider Treatment]
+    B --> E
+    B --> C
     
-    D --> D1{{Growth on\nFollow-up?}}
-    D1 -->|{1-p['growth']:.1%}| D2[Continue Annual MRI\n5 years, then biennial]
-    D1 -->|{p['growth']:.1%}| E
+    C{{Decision Point 2:\nRisk Level?}}
+    C --> E
+    C --> D
     
-    %% Risk Factors Box
-    C ---- C1[Low Risk:<br>- Small size<br>- Calcified<br>- No edema<br>- T2 hypointense]
-    C ---- C2[High Risk:<br>- Size >3cm<br>- No calcification<br>- Peritumoral edema<br>- Near critical structures]
+    D[Watch & Scan] --> D1{{Decision Point 3:\nIntervene on Growth?}}
+    D1 ---Yes--> E
+    D1 ---No--> D2[Scan every 6mo]
     
-    %% Symptomatic Branch
-    B -->|{p['symptomatic']:.1%}| E
-    E{{Treatment\nCandidate?}}
+    E{{Decision Point 4:\nSurgical vs Radiation?}}
+    E --> G
+    E --> F
     
-    %% Poor Surgical Branch
-    E -->|{1-p['surgical_candidate']:.1%}| F[Radiation Options]
-    F -->|{p['srs_vs_rt']:.1%}| F1[SRS:<br>- Size ≤3cm<br>- Single fraction<br>- >13 Gy]
-    F -->|{1-p['srs_vs_rt']:.1%}| F2[Fractionated RT:<br>- Size >3cm<br>- 54-60 Gy/30fx]
+    F{{Decision Point 5:\nRadiation Type?}}
+    F --> F1[SRS Treatment]
+    F --> F2[Fractionated RT]
     
-    %% Surgical Branch
-    E -->|{p['surgical_candidate']:.1%}| G[Surgery]
-    G --> H{{WHO Grade?}}
+    G[Surgery] --> H{{Decision Point 6:\nPost-Surgery Management by Grade}}
     
-    %% Grade 1 Branch
-    H -->|80%| I{{Resection\nExtent?}}
-    I -->|{p['complete_resection']:.1%}| I1[Observe:<br>Annual MRI x 5y<br>then biennial]
-    I -->|{1-p['complete_resection']:.1%}| I2{{Symptoms?}}
-    I2 -->|{1-p['rt_after_incomplete']:.1%}| I3[Observe or RT]
-    I2 -->|{p['rt_after_incomplete']:.1%}| I4[RT/SRS]
+    H -->|Grade 1 Cases| I{{Decision Point 7:\nResection Goal?}}
+    I --> I1
+    I --> I2
     
-    %% Grade 2/3 Branches and Follow-up remain constant
-    H -->|15%| J{{Resection\nExtent?}}
-    H -->|5%| K[Mandatory:<br>- RT 60 Gy/30fx<br>- Consider systemic<br>therapy if progressive]
+    I1[Complete Resection] --> I1M{{Decision Point 8:\nPost-Complete Management?}}
     
-    %% Follow-up Paths
-    I1 & I3 & I4 --> L1[Grade 1 Follow-up:<br>Annual MRI x 5y<br>then biennial]
-    J --> L2[Grade 2 Follow-up:<br>q6mo MRI x 5y<br>then annual]
-    K --> L3[Grade 3 Follow-up:<br>q3-6mo MRI]
+    I2[Incomplete Resection] --> I2M{{Decision Point 9:\nPost-Incomplete Management?}}
     
-    %% Monitoring
-    L1 & L2 & L3 --> M[Monitor:<br>- Neurology<br>- Cognition<br>- Quality of Life]`;
+    I1M --> L1[Grade 1 Follow-up:\nScan q6mo]
+    I2M --> L1
+    I2M --> Q[Consider RT]
+    
+    H --Grade 2 Cases--> L2[Grade 2 Follow-up:\nScan q4mo]
+    
+    H -->|Grade 3 Cases| L3[Grade 3 Follow-up:\nScan q3mo]
+    
+    L1 & L2 & L3 --> M[Standardized Monitoring Protocol]
+    
+    Q --> M
+    
+    style H fill:#f9f,stroke:#333,stroke-width:4px
+    style G fill:#bbf,stroke:#333,stroke-width:4px
+    style E fill:#dfd,stroke:#333,stroke-width:4px
+    style M fill:#ffd,stroke:#333,stroke-width:4px`;
 
 const jsonFormat = `{
     # Initial Assessment

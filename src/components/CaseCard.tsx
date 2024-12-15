@@ -7,15 +7,16 @@ interface CaseCardProps {
     clinicalData: {
         presenting_symptoms: string[] | string;
         medical_history: string[] | string;
-        treatment_path: {
-            initial_action: string;
-            imaging_type: string;
-            steps: string[];
-            monitoring_plan: string;
-            surgical_approach: string;
-            radiation_needed: boolean;
-            follow_up: string;
-        };
+        // treatment_path: {
+        //     initial_action: string;
+        //     imaging_type: string;
+        //     steps: string[];
+        //     monitoring_plan: string;
+        //     surgical_approach: string;
+        //     radiation_needed: boolean;
+        //     follow_up: string;
+        // };
+        meningioma_grade: string;
     };
     clinicalNotes: {
         aggressive: string;
@@ -28,16 +29,16 @@ interface CaseCardProps {
 export default function CaseCard({ age, gender, clinicalData, clinicalNotes, isSelected, onSelect }: CaseCardProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const getTreatmentDetails = () => {
-        const gradeMatch = clinicalNotes.aggressive.match(/WHO Grade: ([I]{1,3})/i) ||
-            clinicalNotes.aggressive.match(/WHO Grade ([I]{1,3})/i) ||
-            clinicalNotes.aggressive.match(/Grade ([I]{1,3})/i);
-        const whoGrade = gradeMatch ? `WHO Grade ${gradeMatch[1]} Meningioma` : 'Meningioma';
+    // const getTreatmentDetails = () => {
+    //     const gradeMatch = clinicalNotes.aggressive.match(/WHO Grade: ([I]{1,3})/i) ||
+    //         clinicalNotes.aggressive.match(/WHO Grade ([I]{1,3})/i) ||
+    //         clinicalNotes.aggressive.match(/Grade ([I]{1,3})/i);
+    //     const whoGrade = gradeMatch ? `WHO Grade ${gradeMatch[1]} Meningioma` : 'Meningioma';
 
-        const surgery = clinicalData.treatment_path.surgical_approach;
+    //     const surgery = clinicalData.treatment_path.surgical_approach;
 
-        return `${whoGrade} • ${surgery ? `${surgery}` : 'No surgery'}`;
-    };
+    //     return `${whoGrade} • ${surgery ? `${surgery}` : 'No surgery'}`;
+    // };
 
     return (
         <>
@@ -51,8 +52,8 @@ export default function CaseCard({ age, gender, clinicalData, clinicalNotes, isS
                     <div className="flex justify-between items-center">
                         <div>
                             <h3 className="font-medium text-base">{age} y/o {gender}</h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400 mt-0.5">
-                                {getTreatmentDetails()}
+                            <p className="text-sm text-gray-600 dark:text-gray-400">
+                                {clinicalData.meningioma_grade} Meningioma
                             </p>
                         </div>
                         {isSelected && (
