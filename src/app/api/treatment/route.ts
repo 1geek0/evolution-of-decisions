@@ -65,57 +65,20 @@ export async function POST(req: Request) {
             : c.clinical_notes.conservative
     );
 
-    const prompt = `Based on the given decision tree and clinical notes, determine the probabilities observed for the given decisions 
-
-Decision Tree
-${decisionTree}
+    const prompt = `Based on the given clinical notes, derive a clinical decision support tree.
+    Creating a node for each decision point.
 
 Clinical Notes:
 ${clinicalNotes.join('\n\n')}
 
-You must respond with ONLY a valid JSON object in this exact format. These are probabilities of the decision points, they are arranged in the order of the decision tree:
-{
-    "symptomatic": <float>,
-    "high_risk": <float>,
-    "growth_on_followup": <float>,
-    "surgical_candidate": <float>,
-    "radiation_choice": {
-        "srs_eligible": <float>,
-        "fractionated_rt": <float>
-    },
-    "resection_extent": {
-        "complete": <float>,
-        "incomplete": <float>
-    },
-    "post_incomplete_treatment": {
-        "observe": <float>,
-        "immediate_rt": <float>
-    },
-    "grade_1_management": {
-        "observe_only": <float>,
-        "adjuvant_rt": <float>
-    },
-    "grade_2_management": {
-        "observe": <float>,
-        "immediate_rt": <float>,
-        "clinical_trial": <float>
-    },
-    "followup_schedule": {
-        "grade_1": <int>,
-        "grade_2": <int>,
-        "grade_3": <int>
-    }
-}
+You must respond with ONLY a valid mermaid flowchart.
 
-If there are no cases for a certain decision point, for example, if there are no cases for Grade 1 management, set the rest of the values under Grade 1 management to 0.
-So, everything under grade_1_management should be 0 if there are no cases for Grade 1 management. Or if all cases were symptomatic, everything from risk level to post_incomplete_treatment should be 0.
-
-Replace all <float> with numbers between 0 and 1, and <int> with whole numbers. Do not include any comments, explanations, or additional text in your response. Only return the JSON object.`;
+Do not include any comments, explanations, or additional text in your response.`;
 
     try {
         const response = await anthropic.messages.create({
-            model: 'claude-3-5-sonnet-20241022',
-            max_tokens: 1024,
+            model: 'claude-3-7-sonnet-20250219',
+            max_tokens: 2048,
             messages: [{
                 role: 'user',
                 content: prompt,
@@ -128,38 +91,12 @@ Replace all <float> with numbers between 0 and 1, and <int> with whole numbers. 
 
         // Clean up the response text to ensure it's valid JSON
         // Remove any markdown code block indicators
-        responseText = responseText.replace(/```json\s*|\s*```/g, '');
+        responseText = responseText.replace(/```mermaid\s*|\s*```/g, '');
 
         // Remove any leading/trailing whitespace
         responseText = responseText.trim();
 
-        try {
-            const jsonResponse = JSON.parse(responseText);
-
-            // Validate the response structure
-            const requiredKeys = [
-                'symptomatic', 'high_risk', 'growth_on_followup',
-                'surgical_candidate', 'radiation_choice', 'resection_extent',
-                'post_incomplete_treatment', 'grade_1_management',
-                'grade_2_management', 'followup_schedule'
-            ];
-
-            const missingKeys = requiredKeys.filter(key => !(key in jsonResponse));
-
-            if (missingKeys.length > 0) {
-                throw new Error(`Missing required keys: ${missingKeys.join(', ')}`);
-            }
-
-            return Response.json(jsonResponse);
-        } catch (parseError: any) {
-            console.error('Failed to parse response as JSON:', parseError);
-            console.error('Raw response:', responseText);
-            return Response.json({
-                error: 'Invalid response format',
-                details: parseError.message,
-                raw: responseText
-            }, { status: 500 });
-        }
+        return Response.json(responseText);
     } catch (error: any) {
         console.error('Error:', error);
         return Response.json({

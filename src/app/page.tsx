@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import MermaidDiagram from '@/components/MermaidDiagram';
 import CaseCard from '@/components/CaseCard';
-import meningiomaCases from '@/data/meningioma_cases_201124_v5.json';
+import meningiomaCases from '@/data/meningioma_cases_170325.json';
 
 // Initial probabilities
 const initialP = {
@@ -92,9 +92,9 @@ const hasCompleteResection = (clinicalNotes: { aggressive: string; conservative:
 
 export default function Home() {
   const [selectedCases, setSelectedCases] = useState<number[]>([]);
-  const [probabilities, setProbabilities] = useState({
-    aggressive: initialP,
-    conservative: initialP
+  const [cdt, setCdt] = useState({
+    aggressive: "",
+    conservative: ""
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
@@ -142,7 +142,7 @@ export default function Home() {
         conservativeResponse.json()
       ]);
 
-      setProbabilities({
+      setCdt({
         aggressive: aggressiveProbs,
         conservative: conservativeProbs
       });
@@ -192,61 +192,6 @@ export default function Home() {
   const handleResetSelection = () => {
     setSelectedCases([]);
   };
-
-  // Generate Mermaid diagram with current probabilities
-  const getMermaidDiagram = () => `flowchart TD
-    A[Initial MRI:\nSuspected Meningioma] --> B{{Decision Point 1:\nTreat as Symptomatic?}}
-    
-    B -->|"🔴 ${(probabilities.aggressive.symptomatic * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.symptomatic * 100).toFixed(1)}%"| E
-    B -->|"🔴 ${((1 - probabilities.aggressive.symptomatic) * 100).toFixed(1)}%\n🔵 ${((1 - probabilities.conservative.symptomatic) * 100).toFixed(1)}%"| C
-    
-    C{{Decision Point 2:\nRisk Level?}}
-    C -->|"🔴 ${(probabilities.aggressive.high_risk * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.high_risk * 100).toFixed(1)}%"| E
-    C -->|"🔴 ${((1 - probabilities.aggressive.high_risk) * 100).toFixed(1)}%\n🔵 ${((1 - probabilities.conservative.high_risk) * 100).toFixed(1)}%"| D
-    
-    D[Watch & Scan] --> D1{{Decision Point 3:\nIntervene on Growth?}}
-    D1 ---Yes-->|"🔴 ${(probabilities.aggressive.growth_on_followup * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.growth_on_followup * 100).toFixed(1)}%"| E
-    D1 ---No-->|"🔴 ${((1 - probabilities.aggressive.growth_on_followup) * 100).toFixed(1)}%\n🔵 ${((1 - probabilities.conservative.growth_on_followup) * 100).toFixed(1)}%"| D2[Scan every ${probabilities.aggressive.followup_schedule.grade_1}mo]
-    
-    E{{Decision Point 4:\nSurgical vs Radiation?}}
-    E -->|"🔴 ${(probabilities.aggressive.surgical_candidate * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.surgical_candidate * 100).toFixed(1)}%"| G
-    E -->|"🔴 ${((1 - probabilities.aggressive.surgical_candidate) * 100).toFixed(1)}%\n🔵 ${((1 - probabilities.conservative.surgical_candidate) * 100).toFixed(1)}%"| F
-    
-    F{{Decision Point 5:\nRadiation Type?}}
-    F -->|"🔴 ${(probabilities.aggressive.radiation_choice.srs_eligible * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.radiation_choice.srs_eligible * 100).toFixed(1)}%"| F1[SRS Treatment]
-    F -->|"🔴 ${(probabilities.aggressive.radiation_choice.fractionated_rt * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.radiation_choice.fractionated_rt * 100).toFixed(1)}%"| F2[Fractionated RT]
-    
-    G[Surgery] --> H{{Decision Point 6:\nPost-Surgery Management by Grade}}
-    
-    H -->|Grade 1 Cases| I{{Decision Point 7:\nResection Goal?}}
-    I -->|"🔴 ${(probabilities.aggressive.resection_extent.complete * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.resection_extent.complete * 100).toFixed(1)}%"| I1
-    I -->|"🔴 ${(probabilities.aggressive.resection_extent.incomplete * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.resection_extent.incomplete * 100).toFixed(1)}%"| I2
-    
-    I1[Complete Resection] --> I1M{{Decision Point 8:\nPost-Complete Management?}}
-    
-    
-    I2[Incomplete Resection] --> I2M{{Decision Point 9:\nPost-Incomplete Management?}}
-    
-    
-    
-    
-    I1M --> L1[Grade 1 Follow-up:\nScan q${probabilities.aggressive.followup_schedule.grade_1}mo]
-    I2M -->|"🔴 ${(probabilities.aggressive.post_incomplete_treatment.observe * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.post_incomplete_treatment.observe * 100).toFixed(1)}%"| L1
-    I2M -->|"🔴 ${(probabilities.aggressive.post_incomplete_treatment.immediate_rt * 100).toFixed(1)}%\n🔵 ${(probabilities.conservative.post_incomplete_treatment.immediate_rt * 100).toFixed(1)}%"| Q[Consider RT]
-
-    
-    H --Grade 2 Cases--> L2[Grade 2 Follow-up:\nScan q${probabilities.aggressive.followup_schedule.grade_2}mo]
-
-    H -->|Grade 3 Cases| L3[Grade 3 Follow-up:\nScan q${probabilities.aggressive.followup_schedule.grade_3}mo]
-    
-    L1 & L2 & L3 --> M[Standardized Monitoring Protocol]
-
-    Q --> M
-    
-    style H fill:#f9f,stroke:#333,stroke-width:4px
-    style G fill:#bbf,stroke:#333,stroke-width:4px
-    style E fill:#dfd,stroke:#333,stroke-width:4px
-    style M fill:#ffd,stroke:#333,stroke-width:4px`;
 
   // TODO: Under the Grade 1 management add 'Radiotherapy/RT' yes/no node
   // TODO: Use the same structure for Grade 2 and Grade 3 management
@@ -367,7 +312,8 @@ export default function Home() {
         </div>
 
         <div className={`w-full transition-all duration-500 ${isUpdated ? 'bg-yellow-100 dark:bg-yellow-900/20 rounded-lg p-4' : ''}`}>
-          <MermaidDiagram chart={getMermaidDiagram()} />
+          <MermaidDiagram chart={cdt.aggressive} />
+          {/* <MermaidDiagram chart={cdt.conservative} /> */}
         </div>
 
         {/* Add a status indicator */}
