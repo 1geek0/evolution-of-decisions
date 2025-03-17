@@ -311,15 +311,35 @@ export default function Home() {
           )}
         </div>
 
-        <div className={`w-full transition-all duration-500 ${isUpdated ? 'bg-yellow-100 dark:bg-yellow-900/20 rounded-lg p-4' : ''}`}>
-          <MermaidDiagram chart={cdt.aggressive} />
-          {/* <MermaidDiagram chart={cdt.conservative} /> */}
+        {/* Diagrams Container */}
+        <div className="space-y-8">
+          {/* Aggressive Treatment Diagram */}
+          <div className={`w-full transition-all duration-500 ${isUpdated ? 'bg-yellow-100 dark:bg-yellow-900/20 rounded-lg p-4' : ''}`}>
+            <div className="mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+              <h3 className="text-xl font-semibold text-red-600 dark:text-red-400">🔴 Aggressive Treatment Path</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Showing probability paths for aggressive intervention approach</p>
+            </div>
+            <div className="overflow-x-auto">
+              <MermaidDiagram chart={cdt.aggressive} />
+            </div>
+          </div>
+
+          {/* Conservative Treatment Diagram */}
+          <div className={`w-full transition-all duration-500 ${isUpdated ? 'bg-yellow-100 dark:bg-yellow-900/20 rounded-lg p-4' : ''}`}>
+            <div className="mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+              <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400">🔵 Conservative Treatment Path</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Showing probability paths for conservative management approach</p>
+            </div>
+            <div className="overflow-x-auto">
+              <MermaidDiagram chart={cdt.conservative} />
+            </div>
+          </div>
         </div>
 
         {/* Add a status indicator */}
         {isUpdated && (
           <div className="mt-4 text-sm text-gray-600 dark:text-gray-400 animate-fade-out">
-            ↑ Values updated based on {selectedCases.length > 0 ? 'aggressive' : 'conservative'} treatment approach
+            ↑ Values updated based on selected cases
           </div>
         )}
       </div>
